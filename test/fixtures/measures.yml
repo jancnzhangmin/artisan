@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bartask_id: 1
+  roomintop: 1.5
+  roomouttop: 1.5
+  roomwidth: 1.5
+  isfloorheat: 1
+  idding: 1
+  dingleft: 1.5
+  dingright: 1.5
+  dingtop: 1.5
+  doorset: 1
+  openinout: 1
+  openleftright: 1
+  summary: MyText
+
+two:
+  bartask_id: 1
+  roomintop: 1.5
+  roomouttop: 1.5
+  roomwidth: 1.5
+  isfloorheat: 1
+  idding: 1
+  dingleft: 1.5
+  dingright: 1.5
+  dingtop: 1.5
+  doorset: 1
+  openinout: 1
+  openleftright: 1
+  summary: MyText

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bartaskdetail_id: 1
+  name: MyString
+  summary: MyText
+
+two:
+  bartaskdetail_id: 1
+  name: MyString
+  summary: MyText

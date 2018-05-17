@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  openid: MyString
+  password_digest: MyString
+  username: MyString
+  province: MyString
+  city: MyString
+  district: MyString
+  valicode: MyString
+  valitime: 2018-04-22 08:34:24
+
+two:
+  openid: MyString
+  password_digest: MyString
+  username: MyString
+  province: MyString
+  city: MyString
+  district: MyString
+  valicode: MyString
+  valitime: 2018-04-22 08:34:24

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bartask_id: 1
+  start: MyString
+  end: MyString
+  summary: MyText
+
+two:
+  bartask_id: 1
+  start: MyString
+  end: MyString
+  summary: MyText

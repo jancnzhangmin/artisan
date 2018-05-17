@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  openid: MyString
+  login: MyString
+  password_degest: MyString
+  status: 1
+
+two:
+  openid: MyString
+  login: MyString
+  password_degest: MyString
+  status: 1

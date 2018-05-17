@@ -1,0 +1,2 @@
+class Openlockimg < ApplicationRecord
+end
