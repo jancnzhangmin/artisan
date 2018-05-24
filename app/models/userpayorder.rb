@@ -1,0 +1,2 @@
+class Userpayorder < ApplicationRecord
+end

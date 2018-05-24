@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180511021405) do
+ActiveRecord::Schema.define(version: 20180523091429) do
 
   create_table "artisanusers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "openid"
@@ -84,6 +84,27 @@ ActiveRecord::Schema.define(version: 20180511021405) do
     t.integer "lock_id"
     t.integer "product_id"
     t.string "brand"
+  end
+
+  create_table "bartaskproimages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "bartaskproimage_file_name"
+    t.string "bartaskproimage_content_type"
+    t.integer "bartaskproimage_file_size"
+    t.datetime "bartaskproimage_updated_at"
+    t.bigint "bartaskpro_id"
+    t.index ["bartaskpro_id"], name: "index_bartaskproimages_on_bartaskpro_id"
+  end
+
+  create_table "bartaskpros", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "bartask_id"
+    t.integer "artisanuser_id"
+    t.datetime "begintime"
+    t.datetime "endtime"
+    t.text "summary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "bartasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -201,6 +222,17 @@ ActiveRecord::Schema.define(version: 20180511021405) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "userpayorders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "artisanuser_id"
+    t.integer "user_id"
+    t.integer "bartask_id"
+    t.float "price", limit: 24
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "ordernumber"
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "openid"
     t.string "login"
@@ -213,4 +245,5 @@ ActiveRecord::Schema.define(version: 20180511021405) do
     t.datetime "valitime"
   end
 
+  add_foreign_key "bartaskproimages", "bartaskpros"
 end

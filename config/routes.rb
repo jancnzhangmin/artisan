@@ -27,6 +27,12 @@ Rails.application.routes.draw do
       get 'getartisanbartask'
       get 'setoffer'
       get 'getoffer'
+      get 'getofferartisan'
+      get 'getprocesstask'
+      get 'getbartaskpro'
+      get 'beginservice'
+      get 'endservice'
+      post 'setbartaskimage'
     end
   end
   resources :getopenids do
@@ -41,4 +47,11 @@ Rails.application.routes.draw do
   end
   resources :eulas
   resources :servicecaps
+  resources :wxpayments do
+    collection do
+      get 'pay'
+      post 'notify'
+    end
+  end
+
 end

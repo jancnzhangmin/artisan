@@ -167,6 +167,8 @@ class ApisController < ApplicationController
     attr :maskaddress,true
     attr :offerstatus,true
     attr :artisancount,true
+    attr :artisan,true
+    attr :price,true
   end
 
   def getbartask
@@ -201,7 +203,7 @@ class ApisController < ApplicationController
 
   def getartisanbartask
     user = Artisanuser.find_by_openid(params[:openid])
-    bartasks = Bartask.where('status = 1').order('id desc')
+    bartasks = Bartask.order('id desc')
     bartaskarr = Array.new
     bartasks.each do |f|
       bartaskcla = Bartaskclass.new
@@ -232,9 +234,20 @@ class ApisController < ApplicationController
       offer = Offer.where('artisanuser_id = ? and bartask_id = ?',user.id,f.id)
       if offer.count > 0
         bartaskcla.hasoffer = 1
+        bartaskcla.offerstatus = 1
       else
         bartaskcla.hasoffer = 0
+        bartaskcla.offerstatus = 0
       end
+      userpayorder = Userpayorder.where('bartask_id = ? and status = ? and artisanuser_id = ?',f.id,1,user.id)
+      if userpayorder.count > 0
+        bartaskcla.offerstatus = 2
+      end
+      userpayorder = Userpayorder.where('bartask_id = ? and status = ?',f.id,1)
+      if userpayorder.count > 0
+        bartaskcla.offerstatus = 3
+      end
+
       bartaskarr.push bartaskcla
     end
     render json: params[:callback]+'({"bartasks":'+ bartaskarr.to_json + '})',content_type: "application/javascript"
@@ -408,10 +421,91 @@ class ApisController < ApplicationController
   def getofferartisan
     bartask = Bartask.find(params[:orderid])
     offer = Offer.where('bartask_id =?',bartask.id)
+    artisanids = Array.new
+    artisanids.push 0
+    offer.each do |f|
+      artisanids.push f.artisanuser_id
+    end
+    artisans = Artisanuser.where('id in(?)',artisanids)
+    render json: params[:callback]+'({"artisans":'+ artisans.to_json + ',"offers":' + offer.to_json + '})',content_type: "application/javascript"
+  end
 
+  def getprocesstask
+    user = User.find_by_openid(params[:openid])
+    bartasks = user.bartasks.where('status in(?)',[3,4,5])
+    bartaskarr = Array.new
+    bartasks.each do |bartask|
+      bartaskcla = Bartaskclass.new
+      bartaskcla.id = bartask.id
+      bartaskcla.ordernumber = bartask.ordernumber
+      userpayorder = Userpayorder.where('bartask_id = ? and status = ?',bartask.id,1).first
+      bartaskcla.artisan = Artisanuser.find(userpayorder.artisanuser_id).username
+      bartaskcla.price = userpayorder.price
+      bartaskcla.measurecount = bartask.measures.count
+      bartaskcla.transitcount = bartask.transits.count
+      bartaskcla.fingercount = bartask.fingers.count
+      bartaskcla.openlockcount = bartask.openlocks.count
+      bartaskcla.status = bartask.status
+      bartaskarr.push bartaskcla
+      render json: params[:callback]+'({"processtask":'+ bartaskarr.to_json + '})',content_type: "application/javascript"
+    end
+  end
+
+  class Bartaskproimageclass
+    attr :bartaskproimage,true
+  end
+
+  def getbartaskpro
+    refreshbartaskpro(params[:orderid],params[:openid])
+  end
+
+  def beginservice
+    bartask = Bartask.find(params[:orderid])
+    bartask.status = 3
+    bartask.save
+    bartaskpro = bartask.bartaskpros.first
+    bartaskpro.begintime = Time.now
+    bartaskpro.save
+    refreshbartaskpro(params[:orderid],params[:openid])
+  end
+
+  def endservice
+    bartask = Bartask.find(params[:orderid])
+    bartask.status = 4
+    bartask.save
+    bartaskpro = bartask.bartaskpros.first
+    bartaskpro.endtime = Time.now
+    bartaskpro.summary = params[:summary]
+    bartaskpro.save
+    refreshbartaskpro(params[:orderid],params[:openid])
+  end
+
+  def setbartaskimage
+    bartaskpro = Bartaskpro.find(params[:bartaskproid])
+    bartaskproimages = bartaskpro.bartaskproimages
+    bartaskproimages.create(bartaskproimage:params[:bartaskproimage])
+    refreshbartaskpro(params[:orderid],params[:openid])
   end
 
   private
+
+  def refreshbartaskpro(orderid,openid)
+    bartask = Bartask.find(orderid)
+    artisanuser = Artisanuser.find_by_openid(openid)
+    bartaskpros = bartask.bartaskpros
+    if bartaskpros.count == 0
+      bartask.bartaskpros.create(artisanuser_id:artisanuser.id)
+      bartaskpros = bartask.bartaskpros
+    end
+    bartaskproimages = bartaskpros.first.bartaskproimages
+    bartaskproimagearr = Array.new
+    bartaskproimages.each do |f|
+      bartaskproimagecla = Bartaskproimageclass.new
+      bartaskproimagecla.bartaskproimage = f.bartaskproimage.url
+      bartaskproimagearr.push bartaskproimagecla
+    end
+    render json: params[:callback]+'({"processtask":'+ bartaskpros.first.to_json + ',"bartaskproimages":' + bartaskproimagearr.to_json + '})',content_type: "application/javascript"
+  end
 
   def randnumber
     vcode=''

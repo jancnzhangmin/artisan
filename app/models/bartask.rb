@@ -7,4 +7,5 @@ class Bartask < ApplicationRecord
   has_many :improves
   has_many :openlocks
   has_many :offers
+  has_many :bartaskpros
 end
