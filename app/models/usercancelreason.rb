@@ -1,0 +1,2 @@
+class Usercancelreason < ApplicationRecord
+end

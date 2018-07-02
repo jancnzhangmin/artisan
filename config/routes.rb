@@ -33,6 +33,18 @@ Rails.application.routes.draw do
       get 'beginservice'
       get 'endservice'
       post 'setbartaskimage'
+      get 'getuserbartaskpro'
+      get 'acceptance'
+      get 'avaamount'
+      get 'checkartisanuserpwd'
+      get 'sendwithdrawvcodesms'
+      get 'checkartisanuservcode'
+      get 'setwithdrawpwd'
+      get 'checkwithdrawpwd'
+      get 'getareaartisanbartask'
+      get 'userunpaidcancel'
+      get 'userpaidcancel'
+      get 'getusercancelreason'
     end
   end
   resources :getopenids do

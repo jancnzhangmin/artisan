@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180523091429) do
+ActiveRecord::Schema.define(version: 20180702065855) do
+
+  create_table "artisancancelreasons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text "reason"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "artisanusers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "openid"
@@ -105,6 +111,8 @@ ActiveRecord::Schema.define(version: 20180523091429) do
     t.text "summary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "receivable"
+    t.integer "needreceivable"
   end
 
   create_table "bartasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -125,9 +133,32 @@ ActiveRecord::Schema.define(version: 20180523091429) do
     t.integer "paytype"
   end
 
+  create_table "cancelorders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "cancelparty"
+    t.bigint "user_id"
+    t.bigint "artisanuser_id"
+    t.float "amount", limit: 24
+    t.float "refunduseramount", limit: 24
+    t.text "reason"
+    t.text "opinions"
+    t.integer "status"
+    t.float "refundartisanuseramount", limit: 24
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "ordernumber"
+    t.index ["artisanuser_id"], name: "index_cancelorders_on_artisanuser_id"
+    t.index ["user_id"], name: "index_cancelorders_on_user_id"
+  end
+
   create_table "eulas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "tile"
     t.text "eula"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "fingermodeldefs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "model"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -138,6 +169,8 @@ ActiveRecord::Schema.define(version: 20180523091429) do
     t.text "summary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "fingermodeldef_id"
+    t.index ["fingermodeldef_id"], name: "index_fingers_on_fingermodeldef_id"
   end
 
   create_table "improves", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -146,6 +179,16 @@ ActiveRecord::Schema.define(version: 20180523091429) do
     t.text "summary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "incomes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "artisanuser_id"
+    t.float "amount", limit: 24
+    t.string "bartaskorder"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artisanuser_id"], name: "index_incomes_on_artisanuser_id"
   end
 
   create_table "locks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -180,6 +223,7 @@ ActiveRecord::Schema.define(version: 20180523091429) do
     t.integer "isselect"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status"
   end
 
   create_table "openlockimgs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -222,6 +266,12 @@ ActiveRecord::Schema.define(version: 20180523091429) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "usercancelreasons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text "reason"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "userpayorders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "artisanuser_id"
     t.integer "user_id"
@@ -231,6 +281,11 @@ ActiveRecord::Schema.define(version: 20180523091429) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ordernumber"
+    t.float "score", limit: 24
+    t.float "skillscore", limit: 24
+    t.float "conceptscore", limit: 24
+    t.float "attitudescore", limit: 24
+    t.text "summary"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -245,5 +300,27 @@ ActiveRecord::Schema.define(version: 20180523091429) do
     t.datetime "valitime"
   end
 
+  create_table "widthdraws", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "artisanuser_id"
+    t.float "amount", limit: 24
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artisanuser_id"], name: "index_widthdraws_on_artisanuser_id"
+  end
+
+  create_table "withdrawpwds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "artisanuser_id"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artisanuser_id"], name: "index_withdrawpwds_on_artisanuser_id"
+  end
+
   add_foreign_key "bartaskproimages", "bartaskpros"
+  add_foreign_key "cancelorders", "artisanusers"
+  add_foreign_key "cancelorders", "users"
+  add_foreign_key "fingers", "fingermodeldefs"
+  add_foreign_key "incomes", "artisanusers"
+  add_foreign_key "widthdraws", "artisanusers"
+  add_foreign_key "withdrawpwds", "artisanusers"
 end

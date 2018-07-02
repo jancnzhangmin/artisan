@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cancelparty: MyString
+  user: one
+  artisanuser: one
+  amount: 1.5
+  refunduseramount: 1.5
+  reason: MyText
+  opinions: MyText
+  status: 1
+  refundartisanuseramount: 1.5
+
+two:
+  cancelparty: MyString
+  user: two
+  artisanuser: two
+  amount: 1.5
+  refunduseramount: 1.5
+  reason: MyText
+  opinions: MyText
+  status: 1
+  refundartisanuseramount: 1.5

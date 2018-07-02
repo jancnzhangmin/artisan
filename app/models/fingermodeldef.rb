@@ -1,0 +1,2 @@
+class Fingermodeldef < ApplicationRecord
+end

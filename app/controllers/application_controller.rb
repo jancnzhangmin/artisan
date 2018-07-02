@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
         PhoneNumbers:phone,
         SignName:'刘叔叔',
         TemplateParam:"{\"code\":\""+vcode+"\"}" ,
-        TemplateCode:'SMS_89890129'
+        TemplateCode:'SMS_138066735'
     }
 
     codeparams = "#{codeparams.sort.map { |k, v| CGI.escape("#{k}")+'='+CGI.escape("#{v}") }.join('&')}"
@@ -38,6 +38,12 @@ class ApplicationController < ActionController::Base
     url = 'http://dysmsapi.aliyuncs.com/?Signature='+hmac+'&'+codeparams
     ret_data = Net::HTTP.get(URI.parse(url))
     #render json: params[:callback]+'({"status":"1"})',content_type: "application/javascript"
+  end
+
+  def sendwxsms(touser,template_id,url,data)
+    $client ||= WeixinAuthorize::Client.new("wxb3d1ca1df413ce9d", "c4a1d6d2a1b5af73a6666e1308e61595")
+    $client.send_template_msg(touser, template_id, url,'#173177', data)
+
   end
 
   private
