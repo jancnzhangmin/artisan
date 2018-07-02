@@ -76,7 +76,7 @@ class ApisController < ApplicationController
 
     if JSON.parse(params[:finger])['rows'].count > 0
       JSON.parse(params[:finger])['rows'].each do |row|
-        bartask.fingers.create(model:row['model'],summary:row['summary'])
+        bartask.fingers.create(model:row['model'],summary:row['summary'],fingermodeldef_id:row['fingermodeldef_id'])
       end
     end
 
@@ -87,7 +87,7 @@ class ApisController < ApplicationController
     end
 
     measurecount = bartask.measures.count
-
+fingercount = bartask.fingers.count
     transitcount = bartask.transits.count
     bartaskdetailcount = bartask.bartaskdetails.count
     openlockcount = bartask.openlocks.count
@@ -105,6 +105,13 @@ class ApisController < ApplicationController
     if openlockcount > 0
       servicetype = servicetype + '维修 开锁'
     end
+    if fingercount > 0
+      finger = bartask.fingers.first.fingermodeldef
+      if finger
+        servicetype = servicetype + finger.model
+      end
+    end
+
 
     data={
         "first": {
@@ -316,7 +323,11 @@ class ApisController < ApplicationController
         bartaskcla.servicetype = bartaskcla.servicetype + '运输'
       end
       if bartaskcla.fingercount > 0
-        bartaskcla.servicetype = bartaskcla.servicetype + '指纹锁安装'
+        #bartaskcla.servicetype = bartaskcla.servicetype + '指纹锁安装'
+        finger = f.fingers.first.fingermodeldef
+        if finger
+          bartaskcla.servicetype = bartaskcla.servicetype + finger.model
+        end
       end
       if bartaskcla.bartaskdetailcount > 0
         bartaskcla.servicetype = bartaskcla.servicetype + '安装'
@@ -386,7 +397,10 @@ class ApisController < ApplicationController
         bartaskcla.servicetype = bartaskcla.servicetype + '运输'
       end
       if bartaskcla.fingercount > 0
-        bartaskcla.servicetype = bartaskcla.servicetype + '指纹锁安装'
+        finger = f.fingers.first.fingermodeldef
+        if finger
+          bartaskcla.servicetype = bartaskcla.servicetype + finger.model
+        end
       end
       if bartaskcla.bartaskdetailcount > 0
         bartaskcla.servicetype = bartaskcla.servicetype + '安装'
@@ -414,6 +428,12 @@ class ApisController < ApplicationController
     attr :name,true
     attr :summary,true
     attr :isselect,true
+  end
+
+  class Fingerclass
+    attr :id,true
+    attr :model,true
+    attr :summary,true
   end
 
   def getbartaskdetail
@@ -464,9 +484,17 @@ class ApisController < ApplicationController
     measures = bartask.measures
     transits = bartask.transits
     fingers = bartask.fingers
+    fingerarr = Array.new
+    fingers.each do |f|
+      fingercla = Fingerclass.new
+      fingercla.id = f.id
+      fingercla.model = f.fingermodeldef.model
+      fingercla.summary = f.summary
+      fingerarr.push fingercla
+    end
     openlocks = bartask.openlocks
 
-    render json: params[:callback]+'({"bartask":' + bartask.to_json + ',"bartaskdetails":'+ bartaskdetailarr.to_json + ',"measures":' + measures.to_json + ',"transits":'+ transits.to_json + ',"openlocks":' + openlocks.to_json + ',"fingers":' +fingers.to_json + ',"barbasedefs":' +barbasedefarr.to_json + ',"barincrementdefs":' +barincrementdefarr.to_json + '})',content_type: "application/javascript"
+    render json: params[:callback]+'({"bartask":' + bartask.to_json + ',"bartaskdetails":'+ bartaskdetailarr.to_json + ',"measures":' + measures.to_json + ',"transits":'+ transits.to_json + ',"openlocks":' + openlocks.to_json + ',"fingers":' + fingerarr.to_json + ',"barbasedefs":' +barbasedefarr.to_json + ',"barincrementdefs":' +barincrementdefarr.to_json + '})',content_type: "application/javascript"
   end
 
   def sendvcodesms
@@ -602,7 +630,7 @@ class ApisController < ApplicationController
 
   def getprocesstask
     user = User.find_by_openid(params[:openid])
-    bartasks = user.bartasks.where('status in(?)',[3,4,5,-1])
+    bartasks = user.bartasks.where('status in(?)',[2,3,4,5,-1])
     bartaskarr = Array.new
     bartasks.each do |bartask|
       bartaskcla = Bartaskclass.new
@@ -815,6 +843,11 @@ class ApisController < ApplicationController
   def getusercancelreason
     usercancelreasons = Usercancelreason.all
     render json: params[:callback]+'({"usercancelreason":'+ usercancelreasons.to_json + '})',content_type: "application/javascript"
+  end
+
+  def getfingermodeldefs
+    fingermodeldefs = Fingermodeldef.all
+    render json: params[:callback]+'({"fingermodeldefs":'+ fingermodeldefs.to_json + '})',content_type: "application/javascript"
   end
 
   private

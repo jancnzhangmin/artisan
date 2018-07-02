@@ -45,6 +45,7 @@ Rails.application.routes.draw do
       get 'userunpaidcancel'
       get 'userpaidcancel'
       get 'getusercancelreason'
+      get 'getfingermodeldefs'
     end
   end
   resources :getopenids do
