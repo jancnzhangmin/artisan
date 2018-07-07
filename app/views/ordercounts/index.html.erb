@@ -1,0 +1,302 @@
+<%= render 'layerbegin' %>
+<script>
+    $(document).ready(function(){
+
+        $('.date-picker').datetimepicker();
+
+        var province = '';
+        var city = '';
+        var district = '';
+        if (getUrlParam('province')){
+            province = getUrlParam('province');
+        }
+        if (getUrlParam('city')){
+            city = getUrlParam('city');
+        }
+        if (getUrlParam('district')){
+            district = getUrlParam('district');
+        }
+        $.ajax({
+            type: 'get',
+            async: true,
+            url: 'ordercounts/getprovince',
+            data:{
+
+            },
+            success: function (data) {
+                $("#provinceselect").append("<option value=''>——省——</option>");
+                $.each(data,function(i,item){
+                    $("#provinceselect").append("<option value=" +item.code +">"+ item.address + "</option>");
+                });
+                if(province != ''){
+                    $('#provinceselect').val(province);
+                }
+            }
+        });
+        if(province != '') {
+            $.ajax({
+                type: 'get',
+                async: true,
+                url: 'ordercounts/getcity',
+                data: {
+                    code: province
+                },
+                success: function (data) {
+                    $.each(data, function (i, item) {
+                        $("#cityselect").append("<option value=" + item.code + ">" + item.address + "</option>");
+                    });
+                    if (city != '') {
+                        $('#cityselect').val(city);
+                    }
+                }
+            });
+        }
+        if(city != '') {
+            $.ajax({
+                type: 'get',
+                async: true,
+                url: 'ordercounts/getdistrict',
+                data: {
+                    code: city
+                },
+                success: function (data) {
+                    $.each(data, function (i, item) {
+                        $("#districtselect").append("<option value=" + item.code + ">" + item.address + "</option>");
+                    });
+                    if (district != '') {
+                        $('#districtselect').val(district);
+                    }
+                }
+            });
+        }
+
+
+        $('#provinceselect').change(function(){
+            city = '';
+            district = '';
+            $("#cityselect").empty();
+            $("#cityselect").append("<option value=''>——市——</option>");
+
+                $.ajax({
+                    type: 'get',
+                    async: true,
+                    url: 'ordercounts/getcity',
+                    data:{
+                        code:$(this).val()
+                    },
+                    success: function (data) {
+                        $.each(data,function(i,item){
+                            $("#cityselect").append("<option value=" +item.code +">"+ item.address + "</option>");
+                        });
+                        province = $('#provinceselect').val();
+                        window.location.href = window.location.href.split('?')[0] + '?' + 'province=' + province + '&city=' + city + '&district=' + district;
+                    }
+                });
+
+
+        });
+
+        $('#cityselect').change(function(){
+            district = '';
+            $("#districtselect").empty();
+            $("#districtselect").append("<option value=''>——区/县——</option>");
+            if($(this).val() != ''){
+                $.ajax({
+                    type: 'get',
+                    async: true,
+                    url: 'ordercounts/getdistrict',
+                    data:{
+                        code:$('#cityselect').val()
+                    },
+                    success: function (data) {
+                        $.each(data,function(i,item){
+                            $("#districtselect").append("<option value=" +item.code +">"+ item.address + "</option>");
+                        });
+                        city = $('#cityselect').val();
+                        window.location.href = window.location.href.split('?')[0] + '?' + 'province=' + province + '&city=' + city + '&district=' + district;
+                    }
+                });
+            }
+
+        });
+
+        $('#districtselect').change(function(){
+            district = $('#districtselect').val();
+            window.location.href = window.location.href.split('?')[0] + '?' + 'province=' + province + '&city=' + city + '&district=' + district;
+
+
+        });
+
+
+
+
+    });
+
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r != null) return unescape(r[2]); return null; //返回参数值
+    }
+
+
+</script>
+
+<div class="breadcrumbs" id="breadcrumbs">
+  <div class="nav-search" id="nav-search">
+    <form class="form-search">
+
+      <a href="#collapsesearch" aria-expanded="false" aria-controls="collapseExample" data-toggle="collapse">
+        <button class="btn btn-info btn-xs">
+          <i class="fa fa-bars"></i>
+        </button>
+      </a>
+
+    </form>
+  </div><!-- #nav-search -->
+</div>
+<div class="collapse in page-content" id="collapsesearch">
+  <div class="widget-body" >
+    <div class="col-md-6">
+      <table style="margin-top: 5px;">
+        <tr>
+          <td><label> 省 </label></td>
+          <td>
+            <select class="form-control" id="provinceselect">
+            </select>
+          </td>
+          <td>&nbsp;<label> 市 </label></td>
+          <td>
+            <select class="form-control" id="cityselect">
+              <option value="">——市——</option>
+            </select>
+          </td>
+          <td>&nbsp;<label> 区/县 </label></td>
+          <td>
+            <select class="form-control" id="districtselect">
+              <option value="">——区/县——</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-6">
+      <table style="margin-top: 5px;">
+        <tr>
+          <td>
+            开始时间
+          </td>
+          <td>
+            <div class="input-group">
+              <input class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" />
+																	<span class="input-group-addon">
+																		<i class="icon-calendar bigger-110"></i>
+																	</span>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<div class="page-content">
+  <div class="page-header">
+    <h1>
+      订单
+    </h1>
+  </div><!-- /.page-header -->
+
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- PAGE CONTENT BEGINS -->
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="table-responsive">
+            <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+              <thead>
+              <tr>
+                <th class="text-center">单号</th>
+                <th class="text-center">发单人</th>
+                <th class="text-center">服务技工</th>
+                <th class="text-center">发单地址</th>
+                <th class="text-center">安装地址</th>
+                <th class="text-center">服务金额</th>
+                <th class="text-center">状态</th>
+                <th class="text-center">发单时间</th>
+                <th class="text-center">操作</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @bartasks.each do |bartask| %>
+                  <tr>
+                    <td>
+                      <%= bartask.ordernumber %>
+                    </td>
+                    <td>
+
+                      <%= bartask.contact %>
+                    </td>
+                    <td>
+                      <% tembartask = Userpayorder.find_by(bartask_id:bartask.id) %>
+                      <% if tembartask && tembartask.status == 1 %>
+                          <%= Artisanuser.find_by(id:tembartask.artisanuser_id).username %>
+                      <% end %>
+                    </td>
+                    <td></td>
+                    <td>
+                      <%= bartask.province %><%= bartask.city %><%= bartask.district %><%= bartask.address %>
+                    </td>
+                    <td>
+                      <% userpayorder = Userpayorder.find_by(bartask_id:bartask.id) %>
+                      <% if userpayorder %>
+                          <%= userpayorder.price %>
+                      <% end %>
+                    </td>
+                    <td>
+
+                      <% if bartask.status == 1 %>
+                          <% status = '新订单' %>
+                      <% elsif bartask.status == 2 %>
+                          <% status = '待确认' %>
+                      <% elsif bartask.status == 3 %>
+                          <% status = '服务中' %>
+                      <% elsif bartask.status == 4 %>
+                          <% status = '待评价' %>
+                      <% elsif bartask.status == 5 %>
+                          <% status = '已完成' %>
+                      <% elsif bartask.status == -1 %>
+                          <% status = '已取消' %>
+                      <% end %>
+                      <%= status %>
+                    </td>
+                    <td>
+                      <%= bartask.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+                    </td>
+
+                    <td>
+                      <div class="visible-md visible-lg hidden-sm hidden-xs btn-group" data-turbolinks="false">
+                        <a class="btn btn-xs btn-success" href=<%= ordercount_path(bartask) %>>
+                          <i class="fa fa-edit bigger-120"></i>
+                          明细
+                        </a>
+                      </div>
+
+                    </td>
+                  </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div data-turbolinks="false" class="text-center">
+        <%= will_paginate @bartasks, renderer: BootstrapPagination::Rails %>
+      </div>
+
+<%= render 'layerend' %>

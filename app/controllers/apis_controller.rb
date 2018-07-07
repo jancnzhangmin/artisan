@@ -87,7 +87,7 @@ class ApisController < ApplicationController
     end
 
     measurecount = bartask.measures.count
-fingercount = bartask.fingers.count
+    fingercount = bartask.fingers.count
     transitcount = bartask.transits.count
     bartaskdetailcount = bartask.bartaskdetails.count
     openlockcount = bartask.openlocks.count
@@ -232,7 +232,7 @@ fingercount = bartask.fingers.count
     attr :artisan,true
     attr :price,true
     attr :servicetype,true
-    attr :paytype,true
+
   end
 
   def getbartask
@@ -260,7 +260,26 @@ fingercount = bartask.fingers.count
       bartaskcla.bartaskdetailcount = f.bartaskdetails.count
       bartaskcla.openlockcount = f.openlocks.count
       bartaskcla.artisancount = f.offers.count
-
+      servicetype = ''
+      if bartaskcla.measurecount > 0
+        servicetype = servicetype + '测量'
+      end
+      if bartaskcla.transitcount > 0
+        servicetype = servicetype + '运输'
+      end
+      if bartaskcla.bartaskdetailcount > 0
+        servicetype = servicetype + '安装'
+      end
+      if bartaskcla.openlockcount > 0
+        servicetype = servicetype + '维修 开锁'
+      end
+      if bartaskcla.fingercount > 0
+        finger = f.fingers.first.fingermodeldef
+        if finger
+          servicetype = servicetype + finger.model
+        end
+      end
+      bartaskcla.servicetype = servicetype
 
       bartaskarr.push bartaskcla
     end
@@ -625,7 +644,23 @@ fingercount = bartask.fingers.count
       artisanids.push f.artisanuser_id
     end
     artisans = Artisanuser.where('id in(?)',artisanids)
-    render json: params[:callback]+'({"artisans":'+ artisans.to_json + ',"offers":' + offer.to_json + '})',content_type: "application/javascript"
+    artisanuserarr = Array.new
+    artisans.each do |f|
+      artisanusercla = Artisanuserclass.new
+      artisanusercla.id = f.id
+      artisanusercla.login = f.login
+      artisanusercla.username = f.username
+      artisanusercla.headurl = f.headurl
+      collection = f.users.where('artisanuser_id = ?',f.id)
+      if collection.count > 0
+        artisanusercla.iscollection = 1
+      else
+        artisanusercla.iscollection = 0
+      end
+      artisanuserarr.push artisanusercla
+    end
+
+    render json: params[:callback]+'({"artisans":'+ artisanuserarr.to_json + ',"offers":' + offer.to_json + '})',content_type: "application/javascript"
   end
 
   def getprocesstask
@@ -636,6 +671,11 @@ fingercount = bartask.fingers.count
       bartaskcla = Bartaskclass.new
       bartaskcla.id = bartask.id
       bartaskcla.ordernumber = bartask.ordernumber
+      bartaskcla.province = bartask.province
+      bartaskcla.city = bartask.city
+      bartaskcla.district = bartask.district
+      bartaskcla.address = bartask.address
+      bartaskcla.installtime = bartask.installtime
       userpayorder = Userpayorder.where('bartask_id = ? and status = ?',bartask.id,1).first
       if userpayorder
         bartaskcla.artisan = Artisanuser.find(userpayorder.artisanuser_id).username
@@ -648,6 +688,28 @@ fingercount = bartask.fingers.count
       bartaskcla.transitcount = bartask.transits.count
       bartaskcla.fingercount = bartask.fingers.count
       bartaskcla.openlockcount = bartask.openlocks.count
+      bartaskcla.bartaskdetailcount = bartask.bartaskdetails.count
+      servicetype = ''
+      if bartaskcla.measurecount > 0
+        servicetype = servicetype + '测量'
+      end
+      if bartaskcla.transitcount > 0
+        servicetype = servicetype + '运输'
+      end
+      if bartaskcla.bartaskdetailcount > 0
+        servicetype = servicetype + '安装'
+      end
+      if bartaskcla.openlockcount > 0
+        servicetype = servicetype + '维修 开锁'
+      end
+      if bartaskcla.fingercount > 0
+        finger = bartask.fingers.first.fingermodeldef
+        if finger
+          servicetype = servicetype + finger.model
+        end
+      end
+      bartaskcla.servicetype = servicetype
+      bartaskcla.paytype = bartask.paytype
       bartaskcla.status = bartask.status
       bartaskarr.push bartaskcla
 
@@ -702,6 +764,8 @@ fingercount = bartask.fingers.count
     attr :summary,true
     attr :bartaskproimages,true
     attr :amount,true
+    attr :receivable,true
+    attr :needreceivable,true
   end
 
   def getuserbartaskpro
@@ -717,6 +781,8 @@ fingercount = bartask.fingers.count
     bartaskprocla.summary = bartaskpro.summary
     bartaskproimage = bartaskpro.bartaskproimages
     bartaskprocla.amount = Userpayorder.find_by(bartask_id:bartask.id).price
+    bartaskprocla.receivable = bartaskpro.receivable
+    bartaskprocla.needreceivable = bartaskpro.needreceivable
     bartaskproimagearr = Array.new
     bartaskproimage.each do |f|
       bartaskproimagecla = Bartaskproimageclass.new
@@ -748,7 +814,7 @@ fingercount = bartask.fingers.count
     artisanuser = Artisanuser.find_by_openid(params[:openid])
     income = artisanuser.incomes.sum('amount')
     withdraw = artisanuser.widthdraws.sum('amount')
-    ava = income - withdraw + 10
+    ava = income - withdraw
     render json: params[:callback]+'({"avaamount":'+ ava.to_s + '})',content_type: "application/javascript"
   end
 
@@ -848,6 +914,119 @@ fingercount = bartask.fingers.count
   def getfingermodeldefs
     fingermodeldefs = Fingermodeldef.all
     render json: params[:callback]+'({"fingermodeldefs":'+ fingermodeldefs.to_json + '})',content_type: "application/javascript"
+  end
+
+  def getbankcode
+    artisanuser = Artisanuser.find_by_openid(params[:openid])
+    bankcode = Bankcode.all
+    render json: params[:callback]+'({"bankcode":'+ bankcode.to_json + ',"artisanuser":' + artisanuser.to_json + '})',content_type: "application/javascript"
+  end
+
+  def bindbankcard
+    status = 1
+    artisanuser = Artisanuser.find_by_openid(params[:openid])
+    bankcards = artisanuser.bankcards
+    bankcode = Bankcode.find(params[:bankcodeid])
+    bankcards.create(bankcode_id:bankcode.id, cardnumber:params[:cardnumber], name:params[:name])
+    render json: params[:callback]+'({"status":'+ status.to_s + '})',content_type: "application/javascript"
+  end
+
+  class Bankcardclass
+    attr :id,true
+    attr :cardnumber,true
+    attr :name,true
+    attr :bankcode,true
+  end
+
+  def getbankcards
+    artisanuser = Artisanuser.find_by_openid(params[:openid])
+    bankcards = artisanuser.bankcards
+    bankcardarr = Array.new
+    bankcards.each do |f|
+      bankcardcla = Bankcardclass.new
+      bankcardcla.id = f.id
+      bankcardcla.cardnumber = f.cardnumber[0,4] +'****' + f.cardnumber[-4,4]
+      bankcardcla.name = f.name
+      bankcardcla.bankcode = Bankcode.find(f.bankcode_id).bank
+      bankcardarr.push bankcardcla
+    end
+    render json: params[:callback]+'({"bankcards":'+ bankcardarr.to_json + '})',content_type: "application/javascript"
+  end
+
+  def deletebankcard
+    status = 1
+    bankcard = Bankcard.find(params[:bankcardid])
+    bankcard.destroy
+    render json: params[:callback]+'({"status":'+ status.to_s + '})',content_type: "application/javascript"
+  end
+
+  def getwithdrawrecord
+    artisanuser = Artisanuser.find_by_openid(params[:openid])
+    withdraws = artisanuser.widthdraws
+    withdraws.each do |f|
+      querybank(f.tradeno)
+    end
+    render json: params[:callback]+'({"withdraws":'+ withdraws.to_json + '})',content_type: "application/javascript"
+  end
+
+  def checkcollection #检查用户是否关注过技工
+    status = 0 #未关注
+    artisanuser = Artisanuser.find_by(id:params[:artisanuserid])
+    user = User.find_by_openid(params[:openid])
+    artisanusers = user.artisanusers.where('artisanuser_id = ?',artisanuser.id)
+    if artisanusers.count > 0
+      status = 1 #  已关注过
+    end
+    render json: params[:callback]+'({"status":'+ status.to_s + '})',content_type: "application/javascript"
+  end
+
+  def collectionartisan #收藏技工
+    status = 1
+    artisanuser = Artisanuser.find_by(id:params[:artisanuserid])
+    user = User.find_by_openid(params[:openid])
+    artisanusers = user.artisanusers.where('artisanuser_id = ?',artisanuser.id)
+    if artisanusers.count > 0
+      user.artisanusers.destroy(artisanuser)
+    else
+      user.artisanusers << artisanuser
+    end
+
+    render json: params[:callback]+'({"status":'+ status.to_s + '})',content_type: "application/javascript"
+  end
+
+  def getmycollectionartisanlist
+    user = User.find_by_openid(params[:openid])
+    artisanusers = user.artisanusers
+    render json: params[:callback]+'({"artisanusers":'+ artisanusers.to_json + '})',content_type: "application/javascript"
+  end
+
+  class Artisanuserclass
+    attr :id,true
+    attr :username,true
+    attr :headurl,true
+    attr :login,true
+    attr :servicenumber,true
+    attr :score,true
+    attr :skillscore,true
+    attr :conceptscore,true
+    attr :attitudescore,true
+    attr :iscollection,true
+  end
+
+  def getartisanuser
+    artisanuser = Artisanuser.find_by(id:params[:artisanuserid])
+    artisanusercla = Artisanuserclass.new
+    artisanusercla.id = artisanuser.id
+    artisanusercla.username = artisanuser.username
+    artisanusercla.login = artisanuser.login
+    artisanusercla.headurl = artisanuser.headurl
+    userpayorders = Userpayorder.where('artisanuser_id = ? and score > ?',artisanuser.id,0)
+    artisanusercla.servicenumber = userpayorders.count
+    artisanusercla.score = userpayorders.average('score')
+    artisanusercla.skillscore = userpayorders.average('skillscore')
+    artisanusercla.conceptscore = userpayorders.average('conceptscore')
+    artisanusercla.attitudescore = userpayorders.average('attitudescore')
+    render json: params[:callback]+'({"artisanuser":' + artisanusercla.to_json + '})',content_type: "application/javascript"
   end
 
   private

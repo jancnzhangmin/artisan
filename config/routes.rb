@@ -46,6 +46,15 @@ Rails.application.routes.draw do
       get 'userpaidcancel'
       get 'getusercancelreason'
       get 'getfingermodeldefs'
+      get 'getbankcode'
+      get 'bindbankcard'
+      get 'getbankcards'
+      get 'deletebankcard'
+      get 'getwithdrawrecord'
+      get 'checkcollection'
+      get 'collectionartisan'
+      get 'getmycollectionartisanlist'
+      get 'getartisanuser'
     end
   end
   resources :getopenids do
@@ -66,5 +75,20 @@ Rails.application.routes.draw do
       post 'notify'
     end
   end
+  resources :ordercounts do
+    collection do
+      get 'getprovince'
+      get 'getcity'
+      get 'getdistrict'
+    end
+  end
+  resources :mytests
+  resources :paybanks do
+    collection do
+      get 'querybank'
+      get 'payuser'
+    end
+  end
+  resources :bankcodes
 
 end

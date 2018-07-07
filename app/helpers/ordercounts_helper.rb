@@ -1,0 +1,2 @@
+module OrdercountsHelper
+end

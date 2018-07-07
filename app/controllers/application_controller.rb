@@ -46,6 +46,32 @@ class ApplicationController < ActionController::Base
 
   end
 
+  def querybank(partnerno)
+    params = {
+        partner_trade_no:partnerno
+    }
+    withdraw = Widthdraw.find_by_tradeno(partnerno)
+    if withdraw.processstatus < 1
+      result = WxPay::Service.query_bank(params)
+      if result['status'] == 'SUCCESS'
+        withdraw.processstatus = 1
+        withdraw.summary = '提现成功'
+        withdraw.save
+      elsif result['status'] == 'FAILED'
+        withdraw.processstatus = 1
+        withdraw.summary = '提现失败'
+        withdraw.amount = -withdraw.amount
+        withdraw.save
+      elsif result['status'] == 'BANK_FAIL'
+        withdraw.processstatus = 1
+        withdraw.summary = '银行退票'
+        withdraw.amount = -withdraw.amount
+        withdraw.save
+      end
+    end
+
+  end
+
   private
   def hmac_sha1(data, secret)
     require 'base64'

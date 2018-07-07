@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bankcode: one
+  artisanuser: one
+  cardnumber: MyString
+  name: MyString
+
+two:
+  bankcode: two
+  artisanuser: two
+  cardnumber: MyString
+  name: MyString

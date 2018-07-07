@@ -30,4 +30,6 @@
 //= require ace.min
 //= require chosen.jquery.min
 //= require kindeditor
+//= require date-time/bootstrap-datetimepicker.min
+//= require date-time/locales/bootstrap-datetimepicker.zh-CN
 // require_tree .

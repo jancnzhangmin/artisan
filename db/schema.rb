@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180702065855) do
+ActiveRecord::Schema.define(version: 20180706075554) do
 
   create_table "artisancancelreasons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "reason"
@@ -45,6 +45,29 @@ ActiveRecord::Schema.define(version: 20180702065855) do
   create_table "artisanusers_servicecaps", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "artisanuser_id", null: false
     t.bigint "servicecap_id", null: false
+  end
+
+  create_table "artisanusers_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "artisanuser_id", null: false
+    t.bigint "user_id", null: false
+  end
+
+  create_table "bankcards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "bankcode_id"
+    t.bigint "artisanuser_id"
+    t.string "cardnumber"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artisanuser_id"], name: "index_bankcards_on_artisanuser_id"
+    t.index ["bankcode_id"], name: "index_bankcards_on_bankcode_id"
+  end
+
+  create_table "bankcodes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "bankcode"
+    t.string "bank"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "barbasedefs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -148,6 +171,13 @@ ActiveRecord::Schema.define(version: 20180702065855) do
     t.string "ordernumber"
     t.index ["artisanuser_id"], name: "index_cancelorders_on_artisanuser_id"
     t.index ["user_id"], name: "index_cancelorders_on_user_id"
+  end
+
+  create_table "chinadistricts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "code"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "eulas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -305,6 +335,13 @@ ActiveRecord::Schema.define(version: 20180702065855) do
     t.float "amount", limit: 24
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "bankname"
+    t.string "cardnumber"
+    t.string "bank"
+    t.integer "withdrawto"
+    t.integer "processstatus"
+    t.string "tradeno"
+    t.string "summary"
     t.index ["artisanuser_id"], name: "index_widthdraws_on_artisanuser_id"
   end
 
@@ -316,6 +353,8 @@ ActiveRecord::Schema.define(version: 20180702065855) do
     t.index ["artisanuser_id"], name: "index_withdrawpwds_on_artisanuser_id"
   end
 
+  add_foreign_key "bankcards", "artisanusers"
+  add_foreign_key "bankcards", "bankcodes"
   add_foreign_key "bartaskproimages", "bartaskpros"
   add_foreign_key "cancelorders", "artisanusers"
   add_foreign_key "cancelorders", "users"

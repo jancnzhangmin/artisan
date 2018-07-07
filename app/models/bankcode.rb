@@ -1,0 +1,2 @@
+class Bankcode < ApplicationRecord
+end

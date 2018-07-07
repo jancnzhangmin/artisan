@@ -1,0 +1,2 @@
+class Chinadistrict < ApplicationRecord
+end
