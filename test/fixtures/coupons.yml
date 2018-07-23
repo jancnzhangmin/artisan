@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  couponbat: one
+  user_id: 
+  artisanuser_id: 
+  model: 1
+  facevalue: 1.5
+  condition: 1.5
+  expirytype: 1
+  assignexpiry: 2018-07-16 17:18:17
+  fixedexpiry: 1
+  ordernumber: MyString
+  alreadyused: 1
+  name: MyString
+  couponnumber: MyString
+  summary: MyText
+  status: 1
+  coupontype: 1
+
+two:
+  couponbat: two
+  user_id: 
+  artisanuser_id: 
+  model: 1
+  facevalue: 1.5
+  condition: 1.5
+  expirytype: 1
+  assignexpiry: 2018-07-16 17:18:17
+  fixedexpiry: 1
+  ordernumber: MyString
+  alreadyused: 1
+  name: MyString
+  couponnumber: MyString
+  summary: MyText
+  status: 1
+  coupontype: 1

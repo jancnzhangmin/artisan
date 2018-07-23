@@ -1,0 +1,2 @@
+class ArtisanqrcodesController < ApplicationController
+end

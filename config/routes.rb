@@ -55,6 +55,9 @@ Rails.application.routes.draw do
       get 'collectionartisan'
       get 'getmycollectionartisanlist'
       get 'getartisanuser'
+      get 'createqrcode'
+      get 'createuserqrcode'
+      get 'sign'
     end
   end
   resources :getopenids do
@@ -90,5 +93,16 @@ Rails.application.routes.draw do
     end
   end
   resources :bankcodes
+  resources :events do
+    collection do
+      get 'getqrcode'
+    end
+  end
+  resources :couponbats do
+    collection do
+      get 'getprogress'
+    end
+    resources :allotusercoupons
+  end
 
 end

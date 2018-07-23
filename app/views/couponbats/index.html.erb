@@ -1,0 +1,160 @@
+<%= render 'layerbegin' %>
+<script>
+  $(document).ready(function(){
+
+
+
+
+
+
+  var progessstep = 0;
+
+        function deleteclick(){
+            var codeTime = setInterval(function Internal(){
+                getprocess();
+            },500);
+            if($('.progress').is(":hidden")){
+                $('.progress').show();
+            }
+        }
+
+      $('.deletedata').click(function(event){
+          var codeTime = setInterval(function Internal(){
+              getprocess();
+          },500);
+          if($('.progress').is(":hidden")){
+              $('.progress').show();
+          }
+      });
+
+  function getprocess(){
+      if(progessstep > 1) {
+          $.ajax({
+              type: 'get',
+              async: true,
+              url: 'couponbats/getprogress',
+              data: {},
+              success: function (data) {
+                  $('.progress-bar').width(parseFloat(data) + '%');
+                  $('.progress').attr('data-percent',parseInt(data) + '%');
+              }
+          });
+      }
+      progessstep++;
+  }
+  });
+
+</script>
+
+<div class="page-content">
+  <div class="page-header">
+    <h1>
+      批量优惠券
+    </h1>
+  </div><!-- /.page-header -->
+
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- PAGE CONTENT BEGINS -->
+
+      <div class="progress progress-striped active" data-percent="" style="display: none;">
+        <div class="progress-bar" style="width:0%;"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="table-responsive">
+            <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+              <thead>
+              <tr>
+                <th class="text-center">优惠券名称</th>
+                <th class="text-center">数量</th>
+                <th class="text-center">面值</th>
+                <th class="text-center">消费条件</th>
+                <th class="text-center">有效期</th>
+                <th class="text-center">优惠券类型</th>
+                <th class="text-center">券码开始</th>
+                <th class="text-center">券码结束</th>
+                <th class="text-center">操作</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @couponbats.each do |couponbat| %>
+                  <tr>
+                    <td>
+                      <%= couponbat.name %>
+                    </td>
+                    <td>
+                      <%= couponbat.number %>
+                    </td>
+                    <td>
+                      <%= couponbat.facevalue %>
+                    </td>
+                    <td>
+                      <%= couponbat.condition %>
+                    </td>
+                    <td>
+                      <% if couponbat.expirytype == 1 %>
+                          <%= couponbat.assignexpiry %>
+                      <% else %>
+                          <%= couponbat.fixedexpiry %>天
+                      <% end %>
+                    </td>
+                    <td>
+                      <% if couponbat.coupontype == 1 %>
+                          注册领取
+                      <% elsif couponbat.coupontype == 2 %>
+                          常规
+                      <% else %>
+                          推荐赠送
+                      <% end %>
+                    </td>
+                    <td>
+                      <%= couponbat.numbegin %>
+                    </td>
+                    <td>
+                      <%= couponbat.numend %>
+                    </td>
+                    <td>
+                      <div class="visible-md visible-lg hidden-sm hidden-xs btn-group" data-turbolinks="false">
+                        <a class="btn btn-xs btn-info" href=<%= couponbat_path(couponbat) %>>
+                          <i class="fa fa-bars bigger-120"></i>
+                          明细
+                        </a>
+                        <% if couponbat.coupontype ==2 %>
+                        <a class="btn btn-xs btn-purple" href=<%= couponbat_allotusercoupons_path(couponbat) %>>
+                          <i class="fa fa-share-alt bigger-120"></i>
+                          发放
+                        </a>
+                            <% else %>
+                            <a class="btn btn-xs btn-default" style="pointer-events: none;filter: alpha(opacity=50);-moz-opacity: 0.5;opacity: 0.5;" href=<%= couponbat_allotusercoupons_path(couponbat) %>>
+                              <i class="fa fa-share-alt bigger-120"></i>
+                              发放
+                            </a>
+                            <% end %>
+                        <a data-confirm="确认删除?" data-method="delete" class="btn btn-xs btn-danger deletedata" href=<%= couponbat_path(couponbat) %>>
+                          <i class="fa fa-trash bigger-120"></i>
+                          删除
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="clearfix form-actions">
+        <div class="col-md-12 text-right">
+          <a class="btn btn-info" href=<%= new_couponbat_path %>>
+            <i class="fa fa-plus bigger-110"></i>
+            新增
+          </a>
+        </div>
+      </div>
+
+
+
+<%= render 'layerend' %>

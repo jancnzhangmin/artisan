@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180706075554) do
+ActiveRecord::Schema.define(version: 20180721185632) do
 
   create_table "artisancancelreasons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "reason"
@@ -40,6 +40,12 @@ ActiveRecord::Schema.define(version: 20180706075554) do
     t.integer "idback_file_size"
     t.datetime "idback_updated_at"
     t.string "login"
+    t.string "artisanuserqrcodeimg_file_name"
+    t.string "artisanuserqrcodeimg_content_type"
+    t.integer "artisanuserqrcodeimg_file_size"
+    t.datetime "artisanuserqrcodeimg_updated_at"
+    t.bigint "up_id"
+    t.bigint "user_id"
   end
 
   create_table "artisanusers_servicecaps", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -178,6 +184,47 @@ ActiveRecord::Schema.define(version: 20180706075554) do
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "couponbats", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.integer "number"
+    t.float "facevalue", limit: 24
+    t.float "condition", limit: 24
+    t.integer "expirytype"
+    t.datetime "assignexpiry"
+    t.integer "fixedexpiry"
+    t.integer "coupontype"
+    t.text "summary"
+    t.integer "generate"
+    t.string "numbegin"
+    t.string "numend"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "city"
+  end
+
+  create_table "coupons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "couponbat_id"
+    t.bigint "user_id"
+    t.bigint "artisanuser_id"
+    t.integer "model"
+    t.float "facevalue", limit: 24
+    t.float "condition", limit: 24
+    t.integer "expirytype"
+    t.datetime "assignexpiry"
+    t.integer "fixedexpiry"
+    t.string "ordernumber"
+    t.integer "alreadyused"
+    t.string "name"
+    t.string "couponnumber"
+    t.text "summary"
+    t.integer "status"
+    t.integer "coupontype"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "city"
+    t.index ["couponbat_id"], name: "index_coupons_on_couponbat_id"
   end
 
   create_table "eulas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -328,6 +375,15 @@ ActiveRecord::Schema.define(version: 20180706075554) do
     t.string "headurl"
     t.string "valicode"
     t.datetime "valitime"
+    t.bigint "artisanuser_id"
+    t.bigint "up_id"
+    t.string "userqrcodeimg_file_name"
+    t.string "userqrcodeimg_content_type"
+    t.integer "userqrcodeimg_file_size"
+    t.datetime "userqrcodeimg_updated_at"
+    t.string "province"
+    t.string "city"
+    t.string "district"
   end
 
   create_table "widthdraws", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -358,6 +414,7 @@ ActiveRecord::Schema.define(version: 20180706075554) do
   add_foreign_key "bartaskproimages", "bartaskpros"
   add_foreign_key "cancelorders", "artisanusers"
   add_foreign_key "cancelorders", "users"
+  add_foreign_key "coupons", "couponbats"
   add_foreign_key "fingers", "fingermodeldefs"
   add_foreign_key "incomes", "artisanusers"
   add_foreign_key "widthdraws", "artisanusers"

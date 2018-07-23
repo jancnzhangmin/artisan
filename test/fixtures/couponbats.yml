@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  number: 1
+  facevalue: 1.5
+  condition: 1.5
+  expirytype: 1
+  assignexpiry: 2018-07-16 17:06:09
+  fixedexpiry: 1
+  coupontype: 1
+  summary: MyText
+  generate: 1
+  numbegin: MyString
+  numend: MyString
+
+two:
+  name: MyString
+  number: 1
+  facevalue: 1.5
+  condition: 1.5
+  expirytype: 1
+  assignexpiry: 2018-07-16 17:06:09
+  fixedexpiry: 1
+  coupontype: 1
+  summary: MyText
+  generate: 1
+  numbegin: MyString
+  numend: MyString

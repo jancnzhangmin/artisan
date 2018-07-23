@@ -1,0 +1,7 @@
+alert('c');
+var codeTime = setInterval(function Internal(){
+if($('.progress').is(":hidden")){
+    $('.progress').show();
+}
+    $('.progress-bar').attr('width','<%=@progress %>')
+},1000);

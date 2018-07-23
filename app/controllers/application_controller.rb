@@ -72,6 +72,86 @@ class ApplicationController < ActionController::Base
 
   end
 
+  def artisanqrcodetran(artisanuserid)
+    idlength = artisanuserid.to_s.length
+    temid = artisanuserid.to_s
+    (8 - idlength).times do
+      temid = '0' + temid
+    end
+    temid = '1' + temid
+    #前缀1技工 前缀2用户
+    qrcode = RQRCode::QRCode.new("http://artisan.liushushu.com/events/getqrcode?id=" + temid)
+    #qrcode = RQRCode::QRCode.new("http://192.168.1.102:3000/events/getqrcode?id=" + artisanuserid.to_s)
+# With default options specified explicitly
+    png = qrcode.as_png(
+        resize_gte_to: false,
+        resize_exactly_to: false,
+        fill: 'white',
+        color: '#2171ba',
+        size: 200,
+        border_modules: 0,
+        module_px_size: 6,
+        file: nil # path to write
+    )
+    IO.write(Rails.root.to_s + "/tmp/" + artisanuserid.to_s + ".png", png.to_s.force_encoding('utf-8'))
+    img=Magick::Image.read(Rails.root.to_s + '/public/qrcodeback/qrcodeback.png').first
+    img2 = Magick::Image.from_blob(png.to_s.force_encoding('utf-8')).first
+    img.composite!(img2, 90,240, Magick::CopyCompositeOp)
+    img.write(Rails.root.to_s + '/tmp/qrcode' + artisanuserid.to_s + '.png')
+    artisanuser = Artisanuser.find(artisanuserid)
+    if artisanuser
+      file = File.open(Rails.root.to_s + '/tmp/qrcode' + artisanuserid.to_s + '.png')
+      artisanuser.artisanuserqrcodeimg = file
+      artisanuser.save
+    end
+    begin
+      #File.delete(Rails.root.to_s + "/tmp/" + artisanuserid.to_s + ".png")
+      #File.delete(Rails.root.to_s + '/tmp/qrcode' + artisanuserid.to_s + '.png')
+    rescue
+
+    end
+  end
+
+  def userqrcodetran(userid)
+    idlength = userid.to_s.length
+    temid = userid.to_s
+    (8 - idlength).times do
+      temid = '0' + temid
+    end
+    temid = '2' + temid
+    #前缀1技工 前缀2用户
+    qrcode = RQRCode::QRCode.new("http://artisan.liushushu.com/events/getqrcode?id=" + temid)
+    #qrcode = RQRCode::QRCode.new("http://192.168.1.102:3000/events/getqrcode?id=" + artisanuserid.to_s)
+    # With default options specified explicitly
+    png = qrcode.as_png(
+        resize_gte_to: false,
+        resize_exactly_to: false,
+        fill: 'white',
+        color: '#2171ba',
+        size: 200,
+        border_modules: 0,
+        module_px_size: 6,
+        file: nil # path to write
+    )
+    IO.write(Rails.root.to_s + "/tmp/u" + userid.to_s + ".png", png.to_s.force_encoding('utf-8'))
+    img=Magick::Image.read(Rails.root.to_s + '/public/qrcodeback/qrcodeback.png').first
+    img2=Magick::Image.read(Rails.root.to_s + "/tmp/u" + userid.to_s + ".png").first #版权图片
+    img.composite!(img2, 90,240, Magick::CopyCompositeOp)
+    img.write(Rails.root.to_s + '/tmp/uqrcode' + userid.to_s + '.png')
+    user = User.find(userid)
+    if user
+      file = File.open(Rails.root.to_s + '/tmp/uqrcode' + userid.to_s + '.png')
+      user.userqrcodeimg = file
+      user.save
+    end
+    begin
+      File.delete(Rails.root.to_s + "/tmp/u" + userid.to_s + ".png")
+      File.delete(Rails.root.to_s + '/tmp/uqrcode' + userid.to_s + '.png')
+    rescue
+
+    end
+  end
+
   private
   def hmac_sha1(data, secret)
     require 'base64'

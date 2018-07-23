@@ -651,7 +651,7 @@ class ApisController < ApplicationController
       artisanusercla.login = f.login
       artisanusercla.username = f.username
       artisanusercla.headurl = f.headurl
-      collection = f.users.where('artisanuser_id = ?',f.id)
+      collection = f.users
       if collection.count > 0
         artisanusercla.iscollection = 1
       else
@@ -1027,6 +1027,24 @@ class ApisController < ApplicationController
     artisanusercla.conceptscore = userpayorders.average('conceptscore')
     artisanusercla.attitudescore = userpayorders.average('attitudescore')
     render json: params[:callback]+'({"artisanuser":' + artisanusercla.to_json + '})',content_type: "application/javascript"
+  end
+
+  def createqrcode
+    artisanuser = Artisanuser.find_by_openid(params[:openid])
+    artisanqrcodetran(artisanuser.id)
+    render json: params[:callback]+'({"qrcodeurl":"' + artisanuser.artisanuserqrcodeimg.to_s + '"})',content_type: "application/javascript"
+  end
+
+  def createuserqrcode
+    user = User.find_by_openid(params[:openid])
+    userqrcodetran(user.id)
+    render json: params[:callback]+'({"qrcodeurl":"' + user.userqrcodeimg.to_s + '"})',content_type: "application/javascript"
+  end
+
+  def sign
+    $client ||= WeixinAuthorize::Client.new("wxb3d1ca1df413ce9d", "c4a1d6d2a1b5af73a6666e1308e61595")
+    sign_package = $client.get_jssign_package(params[:url].split('#')[0])
+    render json: params[:callback]+'('+ sign_package.to_json + ')',content_type: "application/javascript"
   end
 
   private

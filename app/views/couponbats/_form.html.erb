@@ -1,0 +1,263 @@
+<script>
+    $(document).ready(function(){
+        var couponbattype = 1;
+        var progessstep = 0;
+        $('.date-picker').datetimepicker();
+        $(".chosen-select").chosen();
+        $('#cityselect').change(function(){
+            $('#couponbat_city').val($(this).val());
+        });
+        $('#assignexpiryradio').change(function(){
+            if($(this).is(':checked')){
+                $('#assignexpirydiv').show();
+                $('#fixedexpirydiv').hide();
+            }
+        });
+        $('#fixedexpiryradio').change(function(){
+            if($(this).is(':checked')){
+                $('#assignexpirydiv').hide();
+                $('#fixedexpirydiv').show();
+            }
+        });
+        $('#commit').click(function(){
+            if($('#lingqu').is(':checked')){
+                couponbattype = 1;
+            }
+            else if ($('#changgui').is(':checked')){
+                couponbattype = 2 ;
+            }else if($('#zengsong').is(':checked')){
+                couponbattype = 3;
+            }
+            $('#couponbat_coupontype').val(couponbattype);
+
+            if($('#assignexpiryradio').is(':checked')){
+                $('#couponbat_expirytype').val('1');
+            }else
+            {
+                $('#couponbat_expirytype').val('2');
+            }
+
+            //getprocess();
+            var codeTime = setInterval(function Internal(){
+                getprocess();
+
+            },500);
+            if($('.progress').is(":hidden")){
+                $('.progress').show();
+            }
+        });
+
+        function getprocess(){
+            if(progessstep > 1) {
+                $.ajax({
+                    type: 'get',
+                    async: true,
+                    url: 'getprogress',
+                    data: {},
+                    success: function (data) {
+                        $('.progress-bar').width(parseFloat(data) + '%');
+                        $('.progress').attr('data-percent',parseInt(data) + '%');
+                    }
+                });
+            }
+            progessstep++;
+        }
+
+    });
+</script>
+
+<div class="col-xs-12">
+  <!-- PAGE CONTENT BEGINS -->
+  <div class="progress progress-striped active" data-percent="" style="display: none;">
+    <div class="progress-bar" style="width:0%;"></div>
+  </div>
+
+
+  <%= form_with(model:couponbat,local:true,id:'validation-form',:html => {:class=>'form-horizontal m-t',:multipart => true}) do |f| %>
+
+      <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-3 no-padding-right"> 优惠券名称 </label>
+        <div class="col-xs-12 col-sm-9">
+          <div class="clearfix">
+            <%= f.text_field :name,id: :couponbat_name,class:"col-xs-12 col-sm-5" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-3 no-padding-right"> 活动城市 </label>
+        <div class="col-xs-12 col-sm-9">
+          <div class="clearfix">
+            <%= f.hidden_field :city,id: :couponbat_city,class:"col-xs-12 col-sm-5" %>
+            <select class="col-xs-12 col-sm-5 chosen-select" id="cityselect" data-placeholder="请选择活动城市">
+              <option value="">&nbsp;</option>
+              <% @citys.each do |city| %>
+                  <option value=<%= city.address %>><%= city.address %></option>
+              <% end %>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-3 no-padding-right"> 数量 </label>
+        <div class="col-xs-12 col-sm-9">
+          <div class="clearfix">
+            <%= f.text_field :number,id: :couponbat_number,class:"col-xs-12 col-sm-5" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-3 no-padding-right"> 券码前缀 </label>
+        <div class="col-xs-12 col-sm-9">
+          <div class="clearfix">
+            <%= f.text_field :prefix,id: :couponbat_prefix,class:"col-xs-12 col-sm-5" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-3 no-padding-right"> 券码位数 </label>
+        <div class="col-xs-12 col-sm-9">
+          <div class="clearfix">
+            <%= f.text_field :digit,id: :couponbat_digit,class:"col-xs-12 col-sm-5" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-3 no-padding-right"> 面值 </label>
+        <div class="col-xs-12 col-sm-9">
+          <div class="clearfix">
+            <%= f.text_field :facevalue,id: :couponbat_facevalue,class:"col-xs-12 col-sm-5" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-3 no-padding-right"> 满足金额条件 </label>
+        <div class="col-xs-12 col-sm-9">
+          <div class="clearfix">
+            <%= f.text_field :condition,id: :couponbat_condition,class:"col-xs-12 col-sm-5" %>
+            <span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle">
+                                                  如满100才可以使用
+                                                </span>
+											</span>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-3 no-padding-right">有效期方式</label>
+
+        <div class="col-xs-12 col-sm-9">
+          <%= f.hidden_field :expirytype,id: :couponbat_expirytype,class:"col-xs-12 col-sm-5" %>
+          <table>
+            <tr>
+              <td>
+                <div>
+                  <label class="blue">
+                    <input id="assignexpiryradio" name="expirytyperadio"  type="radio" class="ace" />
+                    <span class="lbl"> 指定有效期&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  </label>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <label class="blue">
+                    <input id="fixedexpiryradio" name="expirytyperadio" type="radio" class="ace" />
+                    <span class="lbl"> 固定有效期 </span>
+                  </label>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div id="assignexpirydiv" class="form-group" style="display: none;">
+        <label class="control-label col-xs-12 col-sm-3 no-padding-right"> 指定有效期 </label>
+        <div class="col-xs-12 col-sm-9">
+          <div class="clearfix">
+            <div class="input-group col-xs-12 col-sm-5" style="padding-left: 0px;padding-right:0px;">
+              <%= f.text_field :assignexpiry,id: :couponbat_assignexpiry,class:"form-control date-picker" %>
+
+              <span class="input-group-addon">
+																		<i class="icon-calendar bigger-110"></i>
+																	</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="fixedexpirydiv" class="form-group" style="display: none;">
+        <label class="control-label col-xs-12 col-sm-3 no-padding-right"> 固定有效期 </label>
+        <div class="col-xs-12 col-sm-9">
+          <div class="clearfix">
+            <%= f.text_field :fixedexpiry,id: :couponbat_fixedexpiry,class:"col-xs-12 col-sm-5" %>
+            <span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle">
+                                                  天
+                                                </span>
+											</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-3 no-padding-right"> 优惠券类型 </label>
+        <div class="col-xs-12 col-sm-9">
+          <%= f.hidden_field :coupontype,id: :couponbat_coupontype,class:"col-xs-12 col-sm-5" %>
+          <table>
+            <tr>
+              <td>
+                <div>
+                  <label class="blue">
+                    <input name="couponbattyperadio" id="lingqu" value="1" type="radio" class="ace" checked="" />
+                    <span class="lbl"> 注册领取&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  </label>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <label class="blue">
+                    <input name="couponbattyperadio" id="changgui" value="0" type="radio" class="ace" />
+                    <span class="lbl"> 常规&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  </label>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <label class="blue">
+                    <input name="couponbattyperadio" id="zengsong" value="0" type="radio" class="ace" />
+                    <span class="lbl"> 推荐赠送</span>
+                  </label>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-3 no-padding-right"> 描述 </label>
+        <div class="col-xs-12 col-sm-9">
+          <div class="clearfix">
+            <%= f.text_area :summary,id: :couponbat_summary,class:"col-xs-12 col-sm-5" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="clearfix form-actions">
+        <div class="col-md-offset-3 col-md-9">
+          <button type="submit" id="commit" value="生成" class="btn btn-info" data-disable-with="生成">
+            <i class="icon-ok bigger-110"></i>
+            生成
+          </button>
+        </div>
+      </div>
+  <% end %>
+</div><!-- /.col -->

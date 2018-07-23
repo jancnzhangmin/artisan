@@ -26,9 +26,9 @@
 //= require flot/jquery.flot.min
 //= require flot/jquery.flot.pie.min
 //= require flot/jquery.flot.resize.min
+//= require chosen.jquery.min
 //= require ace-elements.min
 //= require ace.min
-//= require chosen.jquery.min
 //= require kindeditor
 //= require date-time/bootstrap-datetimepicker.min
 //= require date-time/locales/bootstrap-datetimepicker.zh-CN

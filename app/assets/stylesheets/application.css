@@ -13,10 +13,11 @@
  * require_tree .
  *= require bootstrap.min
  *= require font-awesome.min
+ *= require chosen
  *= require ace.min
  *= require ace-rtl.min
  *= require ace-skins.min
- *= require chosen
+
  *= require datepicker
  *= require bootstrap-timepicker
  *= require daterangepicker

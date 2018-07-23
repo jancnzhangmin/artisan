@@ -1,5 +1,18 @@
 class MytestsController < ApplicationController
 
+	def index
+		arr = Array.new
+		@coupon = nil
+		100.times do
+		@coupon = Coupon.where('status = 1').ids
+		arr.push @coupon
+			#sleep(0.1)
+		end
+
+		render arr
+	end
+
+	def chinadistrict
   jsonstr = '{
 		"中国" : {
 			"110000" : "北京市",
@@ -4014,4 +4027,5 @@ class MytestsController < ApplicationController
     end
   end
 
-end
+	end
+  end
