@@ -161,12 +161,5 @@ class ApplicationController < ActionController::Base
     return hmac
   end
 
-  def randnumber
-    vcode=''
-    6.times do
-      vcode+=rand(10).to_s
-    end
-    return vcode
-  end
 
 end

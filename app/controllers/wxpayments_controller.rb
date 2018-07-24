@@ -2,6 +2,9 @@ class WxpaymentsController < ApplicationController
   skip_before_action :verify_authenticity_token
   def pay
     fee = params[:price]
+    if params[:couponnumber].to_s !=''
+      fee = fee.to_f - params[:facevalue].to_f
+    end
     artisanid = params[:artisanid]
     bartaskid = params[:bartaskid]
     ordernumber = Bartask.find(bartaskid).ordernumber
@@ -10,7 +13,7 @@ class WxpaymentsController < ApplicationController
     if userpayorder
       userpayorder.destroy
     end
-    Userpayorder.create(artisanuser_id:artisanid,user_id:userid,bartask_id:bartaskid,price:fee,status:0,ordernumber:ordernumber)
+    Userpayorder.create(artisanuser_id:artisanid,user_id:userid,bartask_id:bartaskid,price:fee,status:0,ordernumber:ordernumber,couponnumber:params[:couponnumber])
     payment_params = {
         body: "预支付服务费",
         out_trade_no: ordernumber,
@@ -50,6 +53,12 @@ class WxpaymentsController < ApplicationController
     if result['return_code']=='SUCCESS'
       ordernumber = result['out_trade_no']
       userpayorder = Userpayorder.find_by_ordernumber(ordernumber)
+      if userpayorder.couponnumber.to_s != ''
+        coupon = Coupon.find_by_couponnumber(userpayorder.couponnumber)
+        coupon.alreadyused = 1
+        coupon.ordernumber = oudernumber
+        coupon.save
+      end
       userpayorder.status = 1
       userpayorder.save
       bartask = Bartask.find_by_ordernumber(ordernumber)

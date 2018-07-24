@@ -2,345 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36cd3b86-5a8a-450c-8a07-02efc169edaf" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/images/.keep" afterPath="$PROJECT_DIR$/app/assets/images/.keep" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/channels/.keep" afterPath="$PROJECT_DIR$/app/assets/javascripts/channels/.keep" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/concerns/.keep" afterPath="$PROJECT_DIR$/app/controllers/concerns/.keep" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/concerns/.keep" afterPath="$PROJECT_DIR$/app/models/concerns/.keep" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/assets/.keep" afterPath="$PROJECT_DIR$/lib/assets/.keep" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/tasks/.keep" afterPath="$PROJECT_DIR$/lib/tasks/.keep" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/.keep" afterPath="$PROJECT_DIR$/log/.keep" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/controllers/.keep" afterPath="$PROJECT_DIR$/test/controllers/.keep" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/.keep" afterPath="$PROJECT_DIR$/test/fixtures/.keep" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/files/.keep" afterPath="$PROJECT_DIR$/test/fixtures/files/.keep" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/helpers/.keep" afterPath="$PROJECT_DIR$/test/helpers/.keep" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/integration/.keep" afterPath="$PROJECT_DIR$/test/integration/.keep" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/mailers/.keep" afterPath="$PROJECT_DIR$/test/mailers/.keep" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/.keep" afterPath="$PROJECT_DIR$/test/models/.keep" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/system/.keep" afterPath="$PROJECT_DIR$/test/system/.keep" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/.keep" afterPath="$PROJECT_DIR$/tmp/.keep" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/.keep" afterPath="$PROJECT_DIR$/vendor/.keep" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/apple-touch-icon-precomposed.png" afterPath="$PROJECT_DIR$/public/apple-touch-icon-precomposed.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/apple-touch-icon.png" afterPath="$PROJECT_DIR$/public/apple-touch-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/favicon.ico" afterPath="$PROJECT_DIR$/public/favicon.ico" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.generators" afterPath="$PROJECT_DIR$/.idea/.generators" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.rakeTasks" afterPath="$PROJECT_DIR$/.idea/.rakeTasks" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180422003059_create_users.rb" afterPath="$PROJECT_DIR$/db/migrate/20180422003059_create_users.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180422003424_create_artisanusers.rb" afterPath="$PROJECT_DIR$/db/migrate/20180422003424_create_artisanusers.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180422030844_add_headurl_to_user.rb" afterPath="$PROJECT_DIR$/db/migrate/20180422030844_add_headurl_to_user.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180422031416_add_headurl_to_artisanuser.rb" afterPath="$PROJECT_DIR$/db/migrate/20180422031416_add_headurl_to_artisanuser.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180422042342_create_bartasks.rb" afterPath="$PROJECT_DIR$/db/migrate/20180422042342_create_bartasks.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180422043036_create_measures.rb" afterPath="$PROJECT_DIR$/db/migrate/20180422043036_create_measures.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180422043359_create_bartaskdetails.rb" afterPath="$PROJECT_DIR$/db/migrate/20180422043359_create_bartaskdetails.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180422043607_create_transits.rb" afterPath="$PROJECT_DIR$/db/migrate/20180422043607_create_transits.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180422043707_create_fingers.rb" afterPath="$PROJECT_DIR$/db/migrate/20180422043707_create_fingers.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180422043813_create_barbasedefs.rb" afterPath="$PROJECT_DIR$/db/migrate/20180422043813_create_barbasedefs.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180422043919_create_barincrementdefs.rb" afterPath="$PROJECT_DIR$/db/migrate/20180422043919_create_barincrementdefs.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180422044006_create_openlocks.rb" afterPath="$PROJECT_DIR$/db/migrate/20180422044006_create_openlocks.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180422044045_create_openlockimgs.rb" afterPath="$PROJECT_DIR$/db/migrate/20180422044045_create_openlockimgs.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180422044130_create_improves.rb" afterPath="$PROJECT_DIR$/db/migrate/20180422044130_create_improves.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180422044843_add_barincrementdef_to_bartaskdetail.rb" afterPath="$PROJECT_DIR$/db/migrate/20180422044843_add_barincrementdef_to_bartaskdetail.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180423030003_create_join_table_barincrementdef_bartaskdetail.rb" afterPath="$PROJECT_DIR$/db/migrate/20180423030003_create_join_table_barincrementdef_bartaskdetail.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180423030557_create_join_table_barbasedef_bartaskdetail.rb" afterPath="$PROJECT_DIR$/db/migrate/20180423030557_create_join_table_barbasedef_bartaskdetail.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180423031207_create_products.rb" afterPath="$PROJECT_DIR$/db/migrate/20180423031207_create_products.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180423032640_add_productid_to_barincrementdef.rb" afterPath="$PROJECT_DIR$/db/migrate/20180423032640_add_productid_to_barincrementdef.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180423032715_add_productid_to_barbasedef.rb" afterPath="$PROJECT_DIR$/db/migrate/20180423032715_add_productid_to_barbasedef.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180423220711_add_contact_to_bartask.rb" afterPath="$PROJECT_DIR$/db/migrate/20180423220711_add_contact_to_bartask.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180425012219_create_testlogs.rb" afterPath="$PROJECT_DIR$/db/migrate/20180425012219_create_testlogs.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180429002058_create_locks.rb" afterPath="$PROJECT_DIR$/db/migrate/20180429002058_create_locks.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180429002243_add_lock_to_bartaskdetail.rb" afterPath="$PROJECT_DIR$/db/migrate/20180429002243_add_lock_to_bartaskdetail.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180501061127_add_paytype_to_bartask.rb" afterPath="$PROJECT_DIR$/db/migrate/20180501061127_add_paytype_to_bartask.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180501081309_add_productid_to_bartaskdetail.rb" afterPath="$PROJECT_DIR$/db/migrate/20180501081309_add_productid_to_bartaskdetail.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180501083627_add_brand_to_bartaskdetail.rb" afterPath="$PROJECT_DIR$/db/migrate/20180501083627_add_brand_to_bartaskdetail.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180509073700_add_attachment_idfront_to_artisanusers.rb" afterPath="$PROJECT_DIR$/db/migrate/20180509073700_add_attachment_idfront_to_artisanusers.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180509073710_add_attachment_idback_to_artisanusers.rb" afterPath="$PROJECT_DIR$/db/migrate/20180509073710_add_attachment_idback_to_artisanusers.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180509083930_add_login_to_artisanuser.rb" afterPath="$PROJECT_DIR$/db/migrate/20180509083930_add_login_to_artisanuser.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180509095612_create_eulas.rb" afterPath="$PROJECT_DIR$/db/migrate/20180509095612_create_eulas.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180510033648_create_servicecaps.rb" afterPath="$PROJECT_DIR$/db/migrate/20180510033648_create_servicecaps.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180510033737_create_join_table_artisanuser_servicecap.rb" afterPath="$PROJECT_DIR$/db/migrate/20180510033737_create_join_table_artisanuser_servicecap.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180511021405_create_offers.rb" afterPath="$PROJECT_DIR$/db/migrate/20180511021405_create_offers.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180521025427_create_userpayorders.rb" afterPath="$PROJECT_DIR$/db/migrate/20180521025427_create_userpayorders.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180521031308_add_ordernumber_to_userpayorder.rb" afterPath="$PROJECT_DIR$/db/migrate/20180521031308_add_ordernumber_to_userpayorder.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180523064417_create_bartaskpros.rb" afterPath="$PROJECT_DIR$/db/migrate/20180523064417_create_bartaskpros.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180523064442_create_bartaskproimages.rb" afterPath="$PROJECT_DIR$/db/migrate/20180523064442_create_bartaskproimages.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180523064655_add_attachment_bartaskproimage_to_bartaskproimages.rb" afterPath="$PROJECT_DIR$/db/migrate/20180523064655_add_attachment_bartaskproimage_to_bartaskproimages.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180523091429_add_bartaskproid_to_bartaskproimage.rb" afterPath="$PROJECT_DIR$/db/migrate/20180523091429_add_bartaskproid_to_bartaskproimage.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180527161250_add_score_to_userpayorder.rb" afterPath="$PROJECT_DIR$/db/migrate/20180527161250_add_score_to_userpayorder.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180527170331_create_incomes.rb" afterPath="$PROJECT_DIR$/db/migrate/20180527170331_create_incomes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180527170407_create_widthdraws.rb" afterPath="$PROJECT_DIR$/db/migrate/20180527170407_create_widthdraws.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180628061836_create_withdrawpwds.rb" afterPath="$PROJECT_DIR$/db/migrate/20180628061836_create_withdrawpwds.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180629013045_add_receivable_to_bartaskpro.rb" afterPath="$PROJECT_DIR$/db/migrate/20180629013045_add_receivable_to_bartaskpro.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180629014014_add_needreceivable_to_bartaskpro.rb" afterPath="$PROJECT_DIR$/db/migrate/20180629014014_add_needreceivable_to_bartaskpro.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180629130107_add_skillscore_to_userpayorder.rb" afterPath="$PROJECT_DIR$/db/migrate/20180629130107_add_skillscore_to_userpayorder.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180629142704_add_summary_to_userpayorder.rb" afterPath="$PROJECT_DIR$/db/migrate/20180629142704_add_summary_to_userpayorder.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180701063451_add_status_to_offer.rb" afterPath="$PROJECT_DIR$/db/migrate/20180701063451_add_status_to_offer.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180701072856_create_cancelorders.rb" afterPath="$PROJECT_DIR$/db/migrate/20180701072856_create_cancelorders.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180701091709_add_ordernumber_to_cancelorder.rb" afterPath="$PROJECT_DIR$/db/migrate/20180701091709_add_ordernumber_to_cancelorder.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180701101533_create_usercancelreasons.rb" afterPath="$PROJECT_DIR$/db/migrate/20180701101533_create_usercancelreasons.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180701101749_create_artisancancelreasons.rb" afterPath="$PROJECT_DIR$/db/migrate/20180701101749_create_artisancancelreasons.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180702065613_create_fingermodeldefs.rb" afterPath="$PROJECT_DIR$/db/migrate/20180702065613_create_fingermodeldefs.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180702065855_add_fingermodeldef_to_finger.rb" afterPath="$PROJECT_DIR$/db/migrate/20180702065855_add_fingermodeldef_to_finger.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180703143924_create_chinadistricts.rb" afterPath="$PROJECT_DIR$/db/migrate/20180703143924_create_chinadistricts.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180705101017_create_bankcodes.rb" afterPath="$PROJECT_DIR$/db/migrate/20180705101017_create_bankcodes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180705101239_create_bankcards.rb" afterPath="$PROJECT_DIR$/db/migrate/20180705101239_create_bankcards.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180705160447_add_bankname_to_widthdraw.rb" afterPath="$PROJECT_DIR$/db/migrate/20180705160447_add_bankname_to_widthdraw.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180706075554_create_join_table_artisanuser_user.rb" afterPath="$PROJECT_DIR$/db/migrate/20180706075554_create_join_table_artisanuser_user.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/404.html" afterPath="$PROJECT_DIR$/public/404.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/422.html" afterPath="$PROJECT_DIR$/public/422.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/500.html" afterPath="$PROJECT_DIR$/public/500.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/runConfigurations/Development__artisan.xml" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Development__artisan.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/runConfigurations/Production__artisan.xml" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Production__artisan.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Rakefile" afterPath="$PROJECT_DIR$/Rakefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/bankcodes/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/bankcodes/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/barbasedefs/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/barbasedefs/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/barincrementdefs/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/barincrementdefs/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/locks/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/locks/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/products/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/products/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/servicecaps/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/servicecaps/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/application/_layerbegin.html.erb" afterPath="$PROJECT_DIR$/app/views/application/_layerbegin.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/application/_layerend.html.erb" afterPath="$PROJECT_DIR$/app/views/application/_layerend.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/apis.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/apis.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/apis.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/apis.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/userqrcodeimgs/1/uqrcode1.png" afterPath="$PROJECT_DIR$/public/userqrcodeimgs/1/uqrcode1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/allotusercoupons_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/allotusercoupons_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/apis_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/apis_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/controllers/apis_controller_test.rb" afterPath="$PROJECT_DIR$/test/controllers/apis_controller_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/apis_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/apis_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/application.rb" afterPath="$PROJECT_DIR$/config/application.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/application_controller_renderer.rb" afterPath="$PROJECT_DIR$/config/initializers/application_controller_renderer.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/application_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/application_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/jobs/application_job.rb" afterPath="$PROJECT_DIR$/app/jobs/application_job.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/mailers/application_mailer.rb" afterPath="$PROJECT_DIR$/app/mailers/application_mailer.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/application_record.rb" afterPath="$PROJECT_DIR$/app/models/application_record.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/application_system_test_case.rb" afterPath="$PROJECT_DIR$/test/application_system_test_case.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artisan.iml" afterPath="$PROJECT_DIR$/.idea/artisan.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/artisancancelreason.rb" afterPath="$PROJECT_DIR$/app/models/artisancancelreason.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/artisancancelreason_test.rb" afterPath="$PROJECT_DIR$/test/models/artisancancelreason_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/artisancancelreasons.yml" afterPath="$PROJECT_DIR$/test/fixtures/artisancancelreasons.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/artisanuser.rb" afterPath="$PROJECT_DIR$/app/models/artisanuser.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/artisanuser_test.rb" afterPath="$PROJECT_DIR$/test/models/artisanuser_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/artisanusers.yml" afterPath="$PROJECT_DIR$/test/fixtures/artisanusers.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/assets.rb" afterPath="$PROJECT_DIR$/config/initializers/assets.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/backtrace_silencers.rb" afterPath="$PROJECT_DIR$/config/initializers/backtrace_silencers.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/bankcard.rb" afterPath="$PROJECT_DIR$/app/models/bankcard.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/bankcard_test.rb" afterPath="$PROJECT_DIR$/test/models/bankcard_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/bankcards.yml" afterPath="$PROJECT_DIR$/test/fixtures/bankcards.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/bankcode.rb" afterPath="$PROJECT_DIR$/app/models/bankcode.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/bankcode_test.rb" afterPath="$PROJECT_DIR$/test/models/bankcode_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/bankcodes.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/bankcodes.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/bankcodes.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/bankcodes.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/bankcodes.yml" afterPath="$PROJECT_DIR$/test/fixtures/bankcodes.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/bankcodes_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/bankcodes_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/controllers/bankcodes_controller_test.rb" afterPath="$PROJECT_DIR$/test/controllers/bankcodes_controller_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/bankcodes_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/bankcodes_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/barbasedef.rb" afterPath="$PROJECT_DIR$/app/models/barbasedef.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/barbasedef_test.rb" afterPath="$PROJECT_DIR$/test/models/barbasedef_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/barbasedefs.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/barbasedefs.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/barbasedefs.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/barbasedefs.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/barbasedefs.yml" afterPath="$PROJECT_DIR$/test/fixtures/barbasedefs.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/barbasedefs_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/barbasedefs_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/controllers/barbasedefs_controller_test.rb" afterPath="$PROJECT_DIR$/test/controllers/barbasedefs_controller_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/barbasedefs_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/barbasedefs_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/barincrementdef.rb" afterPath="$PROJECT_DIR$/app/models/barincrementdef.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/barincrementdef_test.rb" afterPath="$PROJECT_DIR$/test/models/barincrementdef_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/barincrementdefs.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/barincrementdefs.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/barincrementdefs.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/barincrementdefs.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/barincrementdefs.yml" afterPath="$PROJECT_DIR$/test/fixtures/barincrementdefs.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/barincrementdefs_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/barincrementdefs_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/controllers/barincrementdefs_controller_test.rb" afterPath="$PROJECT_DIR$/test/controllers/barincrementdefs_controller_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/barincrementdefs_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/barincrementdefs_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/bartask.rb" afterPath="$PROJECT_DIR$/app/models/bartask.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/bartask_test.rb" afterPath="$PROJECT_DIR$/test/models/bartask_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/bartaskdetail.rb" afterPath="$PROJECT_DIR$/app/models/bartaskdetail.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/bartaskdetail_test.rb" afterPath="$PROJECT_DIR$/test/models/bartaskdetail_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/bartaskdetails.yml" afterPath="$PROJECT_DIR$/test/fixtures/bartaskdetails.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/bartaskpro.rb" afterPath="$PROJECT_DIR$/app/models/bartaskpro.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/bartaskpro_test.rb" afterPath="$PROJECT_DIR$/test/models/bartaskpro_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/bartaskproimage.rb" afterPath="$PROJECT_DIR$/app/models/bartaskproimage.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/bartaskproimage_test.rb" afterPath="$PROJECT_DIR$/test/models/bartaskproimage_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/bartaskproimages.yml" afterPath="$PROJECT_DIR$/test/fixtures/bartaskproimages.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/bartaskpros.yml" afterPath="$PROJECT_DIR$/test/fixtures/bartaskpros.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/bartasks.yml" afterPath="$PROJECT_DIR$/test/fixtures/bartasks.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/boot.rb" afterPath="$PROJECT_DIR$/config/boot.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/cable.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/cable.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/cable.yml" afterPath="$PROJECT_DIR$/config/cable.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/cancelorder.rb" afterPath="$PROJECT_DIR$/app/models/cancelorder.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/cancelorder_test.rb" afterPath="$PROJECT_DIR$/test/models/cancelorder_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/cancelorders.yml" afterPath="$PROJECT_DIR$/test/fixtures/cancelorders.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/channels/application_cable/channel.rb" afterPath="$PROJECT_DIR$/app/channels/application_cable/channel.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/chinadistrict.rb" afterPath="$PROJECT_DIR$/app/models/chinadistrict.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/chinadistrict_test.rb" afterPath="$PROJECT_DIR$/test/models/chinadistrict_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/chinadistricts.yml" afterPath="$PROJECT_DIR$/test/fixtures/chinadistricts.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.ru" afterPath="$PROJECT_DIR$/config.ru" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/channels/application_cable/connection.rb" afterPath="$PROJECT_DIR$/app/channels/application_cable/connection.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/cookies_serializer.rb" afterPath="$PROJECT_DIR$/config/initializers/cookies_serializer.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.yml" afterPath="$PROJECT_DIR$/config/database.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/development.rb" afterPath="$PROJECT_DIR$/config/environments/development.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/bankcodes/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/bankcodes/edit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/barbasedefs/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/barbasedefs/edit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/barincrementdefs/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/barincrementdefs/edit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/eulas/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/eulas/edit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/locks/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/locks/edit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/products/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/products/edit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/servicecaps/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/servicecaps/edit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/locales/en.yml" afterPath="$PROJECT_DIR$/config/locales/en.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environment.rb" afterPath="$PROJECT_DIR$/config/environment.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/eula.rb" afterPath="$PROJECT_DIR$/app/models/eula.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/eula_test.rb" afterPath="$PROJECT_DIR$/test/models/eula_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/eulas.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/eulas.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/eulas.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/eulas.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/eulas.yml" afterPath="$PROJECT_DIR$/test/fixtures/eulas.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/eulas_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/eulas_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/controllers/eulas_controller_test.rb" afterPath="$PROJECT_DIR$/test/controllers/eulas_controller_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/eulas_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/eulas_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/filter_parameter_logging.rb" afterPath="$PROJECT_DIR$/config/initializers/filter_parameter_logging.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/finger.rb" afterPath="$PROJECT_DIR$/app/models/finger.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/finger_test.rb" afterPath="$PROJECT_DIR$/test/models/finger_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/fingermodeldef.rb" afterPath="$PROJECT_DIR$/app/models/fingermodeldef.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/fingermodeldef_test.rb" afterPath="$PROJECT_DIR$/test/models/fingermodeldef_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/fingermodeldefs.yml" afterPath="$PROJECT_DIR$/test/fixtures/fingermodeldefs.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/fingers.yml" afterPath="$PROJECT_DIR$/test/fixtures/fingers.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/getartisanuseropenids.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/getartisanuseropenids.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/getartisanuseropenids.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/getartisanuseropenids.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/getartisanuseropenids_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/getartisanuseropenids_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/controllers/getartisanuseropenids_controller_test.rb" afterPath="$PROJECT_DIR$/test/controllers/getartisanuseropenids_controller_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/getartisanuseropenids_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/getartisanuseropenids_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/getopenids.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/getopenids.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/getopenids.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/getopenids.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/getopenids_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/getopenids_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/controllers/getopenids_controller_test.rb" afterPath="$PROJECT_DIR$/test/controllers/getopenids_controller_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/getopenids_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/getopenids_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/improve.rb" afterPath="$PROJECT_DIR$/app/models/improve.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/improve_test.rb" afterPath="$PROJECT_DIR$/test/models/improve_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/improves.yml" afterPath="$PROJECT_DIR$/test/fixtures/improves.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/income.rb" afterPath="$PROJECT_DIR$/app/models/income.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/income_test.rb" afterPath="$PROJECT_DIR$/test/models/income_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/incomes.yml" afterPath="$PROJECT_DIR$/test/fixtures/incomes.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/bankcodes/index.html.erb" afterPath="$PROJECT_DIR$/app/views/bankcodes/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/barbasedefs/index.html.erb" afterPath="$PROJECT_DIR$/app/views/barbasedefs/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/barincrementdefs/index.html.erb" afterPath="$PROJECT_DIR$/app/views/barincrementdefs/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/getartisanuseropenids/index.html.erb" afterPath="$PROJECT_DIR$/app/views/getartisanuseropenids/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/getopenids/index.html.erb" afterPath="$PROJECT_DIR$/app/views/getopenids/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/locks/index.html.erb" afterPath="$PROJECT_DIR$/app/views/locks/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/ordercounts/index.html.erb" afterPath="$PROJECT_DIR$/app/views/ordercounts/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/products/index.html.erb" afterPath="$PROJECT_DIR$/app/views/products/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/servicecaps/index.html.erb" afterPath="$PROJECT_DIR$/app/views/servicecaps/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/inflections.rb" afterPath="$PROJECT_DIR$/config/initializers/inflections.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/load_kindeditor.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/load_kindeditor.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/lock.rb" afterPath="$PROJECT_DIR$/app/models/lock.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/lock_test.rb" afterPath="$PROJECT_DIR$/test/models/lock_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/locks.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/locks.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/locks.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/locks.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/locks.yml" afterPath="$PROJECT_DIR$/test/fixtures/locks.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/locks_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/locks_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/controllers/locks_controller_test.rb" afterPath="$PROJECT_DIR$/test/controllers/locks_controller_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/locks_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/locks_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/mailer.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/mailer.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/mailer.text.erb" afterPath="$PROJECT_DIR$/app/views/layouts/mailer.text.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/config/manifest.js" afterPath="$PROJECT_DIR$/app/assets/config/manifest.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/measure.rb" afterPath="$PROJECT_DIR$/app/models/measure.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/measure_test.rb" afterPath="$PROJECT_DIR$/test/models/measure_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/measures.yml" afterPath="$PROJECT_DIR$/test/fixtures/measures.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/mime_types.rb" afterPath="$PROJECT_DIR$/config/initializers/mime_types.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/mytests.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/mytests.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/mytests.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/mytests.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/mytests_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/mytests_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/controllers/mytests_controller_test.rb" afterPath="$PROJECT_DIR$/test/controllers/mytests_controller_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/mytests_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/mytests_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/bankcodes/new.html.erb" afterPath="$PROJECT_DIR$/app/views/bankcodes/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/barbasedefs/new.html.erb" afterPath="$PROJECT_DIR$/app/views/barbasedefs/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/barincrementdefs/new.html.erb" afterPath="$PROJECT_DIR$/app/views/barincrementdefs/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/locks/new.html.erb" afterPath="$PROJECT_DIR$/app/views/locks/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/products/new.html.erb" afterPath="$PROJECT_DIR$/app/views/products/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/servicecaps/new.html.erb" afterPath="$PROJECT_DIR$/app/views/servicecaps/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/offer.rb" afterPath="$PROJECT_DIR$/app/models/offer.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/offer_test.rb" afterPath="$PROJECT_DIR$/test/models/offer_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/offers.yml" afterPath="$PROJECT_DIR$/test/fixtures/offers.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/openlock.rb" afterPath="$PROJECT_DIR$/app/models/openlock.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/openlock_test.rb" afterPath="$PROJECT_DIR$/test/models/openlock_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/openlockimg.rb" afterPath="$PROJECT_DIR$/app/models/openlockimg.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/openlockimg_test.rb" afterPath="$PROJECT_DIR$/test/models/openlockimg_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/openlockimgs.yml" afterPath="$PROJECT_DIR$/test/fixtures/openlockimgs.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/openlocks.yml" afterPath="$PROJECT_DIR$/test/fixtures/openlocks.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/ordercounts.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/ordercounts.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/ordercounts.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/ordercounts.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/ordercounts_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/ordercounts_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/controllers/ordercounts_controller_test.rb" afterPath="$PROJECT_DIR$/test/controllers/ordercounts_controller_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/ordercounts_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/ordercounts_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/paybanks.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/paybanks.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/paybanks.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/paybanks.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/paybanks_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/paybanks_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/controllers/paybanks_controller_test.rb" afterPath="$PROJECT_DIR$/test/controllers/paybanks_controller_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/paybanks_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/paybanks_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/product.rb" afterPath="$PROJECT_DIR$/app/models/product.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/product_test.rb" afterPath="$PROJECT_DIR$/test/models/product_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/production.rb" afterPath="$PROJECT_DIR$/config/environments/production.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/products.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/products.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/products.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/products.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/products.yml" afterPath="$PROJECT_DIR$/test/fixtures/products.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/products_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/products_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/controllers/products_controller_test.rb" afterPath="$PROJECT_DIR$/test/controllers/products_controller_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/products_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/products_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/puma.rb" afterPath="$PROJECT_DIR$/config/puma.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/rails_kindeditor.rb" afterPath="$PROJECT_DIR$/config/initializers/rails_kindeditor.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/robots.txt" afterPath="$PROJECT_DIR$/public/robots.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/secrets.yml" afterPath="$PROJECT_DIR$/config/secrets.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/seeds.rb" afterPath="$PROJECT_DIR$/db/seeds.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/jobs/sendwxmessage_job.rb" afterPath="$PROJECT_DIR$/app/jobs/sendwxmessage_job.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/jobs/sendwxmessage_job_test.rb" afterPath="$PROJECT_DIR$/test/jobs/sendwxmessage_job_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/servicecap.rb" afterPath="$PROJECT_DIR$/app/models/servicecap.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/servicecap_test.rb" afterPath="$PROJECT_DIR$/test/models/servicecap_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/servicecaps.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/servicecaps.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/servicecaps.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/servicecaps.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/servicecaps.yml" afterPath="$PROJECT_DIR$/test/fixtures/servicecaps.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/servicecaps_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/servicecaps_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/controllers/servicecaps_controller_test.rb" afterPath="$PROJECT_DIR$/test/controllers/servicecaps_controller_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/servicecaps_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/servicecaps_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/runConfigurations/spec__artisan.xml" afterPath="$PROJECT_DIR$/.idea/runConfigurations/spec__artisan.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/spring.rb" afterPath="$PROJECT_DIR$/config/spring.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/test.rb" afterPath="$PROJECT_DIR$/config/environments/test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/runConfigurations/test__artisan.xml" afterPath="$PROJECT_DIR$/.idea/runConfigurations/test__artisan.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/test_helper.rb" afterPath="$PROJECT_DIR$/test/test_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/testlog.rb" afterPath="$PROJECT_DIR$/app/models/testlog.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/testlog_test.rb" afterPath="$PROJECT_DIR$/test/models/testlog_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/testlogs.yml" afterPath="$PROJECT_DIR$/test/fixtures/testlogs.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/transit.rb" afterPath="$PROJECT_DIR$/app/models/transit.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/transit_test.rb" afterPath="$PROJECT_DIR$/test/models/transit_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/transits.yml" afterPath="$PROJECT_DIR$/test/fixtures/transits.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/user_test.rb" afterPath="$PROJECT_DIR$/test/models/user_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/usercancelreason.rb" afterPath="$PROJECT_DIR$/app/models/usercancelreason.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/usercancelreason_test.rb" afterPath="$PROJECT_DIR$/test/models/usercancelreason_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/usercancelreasons.yml" afterPath="$PROJECT_DIR$/test/fixtures/usercancelreasons.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/userpayorder.rb" afterPath="$PROJECT_DIR$/app/models/userpayorder.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/userpayorder_test.rb" afterPath="$PROJECT_DIR$/test/models/userpayorder_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/userpayorders.yml" afterPath="$PROJECT_DIR$/test/fixtures/userpayorders.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/users.yml" afterPath="$PROJECT_DIR$/test/fixtures/users.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/widthdraw.rb" afterPath="$PROJECT_DIR$/app/models/widthdraw.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/widthdraw_test.rb" afterPath="$PROJECT_DIR$/test/models/widthdraw_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/widthdraws.yml" afterPath="$PROJECT_DIR$/test/fixtures/widthdraws.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/withdrawpwd.rb" afterPath="$PROJECT_DIR$/app/models/withdrawpwd.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/models/withdrawpwd_test.rb" afterPath="$PROJECT_DIR$/test/models/withdrawpwd_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/withdrawpwds.yml" afterPath="$PROJECT_DIR$/test/fixtures/withdrawpwds.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/wrap_parameters.rb" afterPath="$PROJECT_DIR$/config/initializers/wrap_parameters.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/wxpayments.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/wxpayments.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/wxpayments.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/wxpayments.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/wxpayments_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/wxpayments_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/controllers/wxpayments_controller_test.rb" afterPath="$PROJECT_DIR$/test/controllers/wxpayments_controller_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/wxpayments_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/wxpayments_helper.rb" />
     </list>
     <ignored path="artisan.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -364,34 +33,62 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="couponbats_controller.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/couponbats_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="195" column="0" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="routes.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/routes.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="97" column="21" selection-start-line="97" selection-start-column="21" selection-end-line="97" selection-end-column="21" />
+              <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.erb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="couponbats_controller.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/couponbats_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="110" column="13" selection-start-line="110" selection-start-column="13" selection-end-line="110" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.erb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/couponbats/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.57637995">
-              <caret line="136" column="28" selection-start-line="136" selection-start-column="28" selection-end-line="136" selection-end-column="28" />
-              <folding>
-                <element signature="e#4199#4285#0#HTML" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0">
+              <caret line="150" column="17" selection-start-line="150" selection-start-column="17" selection-end-line="150" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="apis_controller.rb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/apis_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5265201">
+              <caret line="818" column="10" selection-start-line="818" selection-start-column="10" selection-end-line="818" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wxpayments_controller.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/wxpayments_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="60" column="9" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application_controller.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="95" column="52" selection-start-line="95" selection-start-column="48" selection-end-line="95" selection-end-column="52" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -400,17 +97,7 @@
         <entry file="file://$PROJECT_DIR$/app/controllers/allotusercoupons_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="32" column="7" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html.erb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/ordercounts/index.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-26.208334">
-              <caret line="297" column="0" selection-start-line="297" selection-start-column="0" selection-end-line="299" selection-end-column="12" />
+              <caret line="32" column="40" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -419,18 +106,9 @@
       <file leaf-file-name="index.html.erb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/allotusercoupons/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-27.458334">
+            <state vertical-scroll-proportion="0.0">
               <caret line="298" column="26" selection-start-line="298" selection-start-column="26" selection-end-line="298" selection-end-column="26" />
-              <folding>
-                <element signature="e#338#359#0#HTML" expanded="true" />
-                <element signature="e#430#450#0#HTML" expanded="true" />
-                <element signature="e#1459#1480#0#HTML" expanded="true" />
-                <element signature="e#1551#1571#0#HTML" expanded="true" />
-                <element signature="e#2780#2801#0#HTML" expanded="true" />
-                <element signature="e#2872#2892#0#HTML" expanded="true" />
-                <element signature="e#4592#4619#0#HTML" expanded="true" />
-                <element signature="e#5031#5055#0#HTML" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -438,7 +116,7 @@
       <file leaf-file-name="new.html.erb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/couponbats/new.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.75">
+            <state vertical-scroll-proportion="0.0">
               <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
               <folding />
             </state>
@@ -448,28 +126,8 @@
       <file leaf-file-name="_form.html.erb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/couponbats/_form.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.208334">
+            <state vertical-scroll-proportion="0.0">
               <caret line="75" column="134" selection-start-line="75" selection-start-column="2" selection-end-line="75" selection-end-column="134" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ordercounts_controller.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/ordercounts_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="2" column="44" selection-start-line="2" selection-start-column="44" selection-end-line="2" selection-end-column="94" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="artisanqrcodes_controller.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/artisanqrcodes_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -489,7 +147,6 @@
         <option value="$PROJECT_DIR$/app/controllers/servicecaps_controller.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20180511014948_create_join_table_artisanuser_bartask.rb" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/app/controllers/wxpayments_controller.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20180523064655_add_attachment_bartaskproimage_to_bartaskproimages.rb" />
         <option value="$PROJECT_DIR$/app/models/bartask.rb" />
         <option value="$PROJECT_DIR$/app/models/bartaskpro.rb" />
@@ -514,8 +171,6 @@
         <option value="$PROJECT_DIR$/app/models/artisanuser.rb" />
         <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/app/controllers/events_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/apis_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/couponbat.rb" />
         <option value="$PROJECT_DIR$/app/views/application/_layerbegin.html.erb" />
         <option value="$PROJECT_DIR$/app/views/couponbats/new.html.erb" />
@@ -530,10 +185,13 @@
         <option value="$PROJECT_DIR$/app/views/couponbats/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/mytests_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/couponbats_controller.rb" />
-        <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/allotusercoupons_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/allotusercoupons/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/couponbats/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/allotusercoupons_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/wxpayments_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/apis_controller.rb" />
       </list>
     </option>
   </component>
@@ -573,8 +231,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1035,7 +691,9 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="RailsProjectView" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1265,18 +923,18 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32932693" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1331,14 +989,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/wxpayments_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="41" column="7" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/paybanks_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1364,7 +1014,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="27" selection-start-line="0" selection-start-column="27" selection-end-line="0" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1384,7 +1033,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1424,13 +1072,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="105" column="7" selection-start-line="105" selection-start-column="7" selection-end-line="105" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/user.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1120797">
@@ -1442,13 +1083,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="45" column="9" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/apis_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5666666">
-          <caret line="629" column="0" selection-start-line="629" selection-start-column="0" selection-end-line="629" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1491,7 +1125,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="229" column="18" selection-start-line="229" selection-start-column="18" selection-end-line="229" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1529,7 +1162,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="253" column="25" selection-start-line="253" selection-start-column="25" selection-end-line="253" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1544,7 +1176,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.05603985">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1552,7 +1183,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="12" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1567,7 +1197,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="31" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1575,7 +1204,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="44" column="24" selection-start-line="44" selection-start-column="24" selection-end-line="44" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1583,7 +1211,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1591,23 +1218,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/couponbats_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="195" column="0" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="97" column="21" selection-start-line="97" selection-start-column="21" selection-end-line="97" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1615,7 +1225,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1623,13 +1232,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="44" selection-start-line="2" selection-start-column="44" selection-end-line="2" selection-end-column="94" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/ordercounts/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-26.208334">
+        <state vertical-scroll-proportion="0.0">
           <caret line="297" column="0" selection-start-line="297" selection-start-column="0" selection-end-line="299" selection-end-column="12" />
           <folding />
         </state>
@@ -1637,7 +1245,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/couponbats/new.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.75">
+        <state vertical-scroll-proportion="0.0">
           <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
           <folding />
         </state>
@@ -1645,8 +1253,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/couponbats/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.208334">
+        <state vertical-scroll-proportion="0.0">
           <caret line="75" column="134" selection-start-line="75" selection-start-column="2" selection-end-line="75" selection-end-column="134" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/allotusercoupons/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="298" column="26" selection-start-line="298" selection-start-column="26" selection-end-line="298" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/couponbats/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="150" column="17" selection-start-line="150" selection-start-column="17" selection-end-line="150" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/couponbats_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="110" column="13" selection-start-line="110" selection-start-column="13" selection-end-line="110" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="95" column="52" selection-start-line="95" selection-start-column="48" selection-end-line="95" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -1654,35 +1302,24 @@
     <entry file="file://$PROJECT_DIR$/app/controllers/allotusercoupons_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="7" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
+          <caret line="32" column="40" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/allotusercoupons/index.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/wxpayments_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-27.458334">
-          <caret line="298" column="26" selection-start-line="298" selection-start-column="26" selection-end-line="298" selection-end-column="26" />
-          <folding>
-            <element signature="e#338#359#0#HTML" expanded="true" />
-            <element signature="e#430#450#0#HTML" expanded="true" />
-            <element signature="e#1459#1480#0#HTML" expanded="true" />
-            <element signature="e#1551#1571#0#HTML" expanded="true" />
-            <element signature="e#2780#2801#0#HTML" expanded="true" />
-            <element signature="e#2872#2892#0#HTML" expanded="true" />
-            <element signature="e#4592#4619#0#HTML" expanded="true" />
-            <element signature="e#5031#5055#0#HTML" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="60" column="9" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/couponbats/index.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/apis_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57637995">
-          <caret line="136" column="28" selection-start-line="136" selection-start-column="28" selection-end-line="136" selection-end-column="28" />
-          <folding>
-            <element signature="e#4199#4285#0#HTML" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.5265201">
+          <caret line="818" column="10" selection-start-line="818" selection-start-column="10" selection-end-line="818" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -58,6 +58,10 @@ Rails.application.routes.draw do
       get 'createqrcode'
       get 'createuserqrcode'
       get 'sign'
+      get 'senduservcodesms'
+      get 'binduser'
+      get 'getuserinfo'
+      get 'getcoupon'
     end
   end
   resources :getopenids do

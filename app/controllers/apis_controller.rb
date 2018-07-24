@@ -806,7 +806,12 @@ class ApisController < ApplicationController
     userpayorder.summary = params[:summary]
     userpayorder.save
     artisanuser = Artisanuser.find(userpayorder.artisanuser_id)
-    artisanuser.incomes.create(amount:userpayorder.price,bartaskorder:bartask.ordernumber,status:1)
+    price = userpayorder.price
+    coupon = Coupon.find_by_ordernumber(bartask.ordernumber)
+    if coupon
+      price += coupon.facevalue
+    end
+    artisanuser.incomes.create(amount:price,bartaskorder:bartask.ordernumber,status:1)
     render json: params[:callback]+'({"status":"200"})',content_type: "application/javascript"
   end
 
@@ -1045,6 +1050,43 @@ class ApisController < ApplicationController
     $client ||= WeixinAuthorize::Client.new("wxb3d1ca1df413ce9d", "c4a1d6d2a1b5af73a6666e1308e61595")
     sign_package = $client.get_jssign_package(params[:url].split('#')[0])
     render json: params[:callback]+'('+ sign_package.to_json + ')',content_type: "application/javascript"
+  end
+
+
+
+  def senduservcodesms
+    randnum = randnumber
+    user = User.find_by_openid(params[:openid])
+    user.valicode = randnum
+    user.valitime = Time.now
+    user.save
+    sendvcode(params[:phone],randnum)
+    render json: params[:callback]+'({"status":"200"})',content_type: "application/javascript"
+  end
+
+  def binduser
+    status = 0
+    user = User.find_by_openid(params[:openid])
+    if user.valicode == params[:vcode] && user.valitime + 15.minutes > Time.now
+      status = 1
+      user.login = params[:phone]
+      user.province = params[:province]
+      user.city = params[:city]
+      user.district = params[:district]
+      user.save
+    end
+    render json: params[:callback]+'({"status":'+ status.to_s + '})',content_type: "application/javascript"
+  end
+
+  def getuserinfo
+    user = User.find_by_openid(params[:openid])
+    render json: params[:callback]+'({"user":'+ user.to_json + '})',content_type: "application/javascript"
+  end
+
+  def getcoupon
+    user = User.find_by_openid(params[:openid])
+    coupons = Coupon.where('user_id = ? and alreadyused = 0 and assignexpiry > ?',user.id,Time.now)
+    render json: params[:callback]+'({"coupons":'+ coupons.to_json + '})',content_type: "application/javascript"
   end
 
   private

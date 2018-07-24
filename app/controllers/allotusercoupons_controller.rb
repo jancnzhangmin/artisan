@@ -27,6 +27,9 @@ class AllotusercouponsController < ApplicationController
     coupons.each do |f|
       if temusersid.count > 0
         f.user_id = temusersid[0]
+        if f.expirytype == 2
+          f.assignexpiry = Time.now + f.fixedexpiry.days
+        end
         temusersid.delete(temusersid[0])
         f.save
       end

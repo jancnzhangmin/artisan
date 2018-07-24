@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180721185632) do
+ActiveRecord::Schema.define(version: 20180724060151) do
 
   create_table "artisancancelreasons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "reason"
@@ -363,6 +363,7 @@ ActiveRecord::Schema.define(version: 20180721185632) do
     t.float "conceptscore", limit: 24
     t.float "attitudescore", limit: 24
     t.text "summary"
+    t.string "couponnumber"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
