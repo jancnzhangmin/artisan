@@ -135,6 +135,12 @@
               </a>
             </li>
             <li data-turbolinks="false">
+              <a href=<%= projectdefs_path %>>
+                <i class="icon-double-angle-right"></i>
+                项目
+              </a>
+            </li>
+            <li data-turbolinks="false">
               <a href=<%= products_path %>>
                 <i class="icon-double-angle-right"></i>
                 型号
@@ -156,6 +162,18 @@
               <a href=<%= bankcodes_path %>>
                 <i class="icon-double-angle-right"></i>
                 开户银行
+              </a>
+            </li>
+            <li data-turbolinks="false">
+              <a href=<%= distcoms_path %>>
+                <i class="icon-double-angle-right"></i>
+                分销提成
+              </a>
+            </li>
+            <li data-turbolinks="false">
+              <a href=<%= servicecoms_path %>>
+                <i class="icon-double-angle-right"></i>
+                服务提成
               </a>
             </li>
           </ul>
@@ -217,6 +235,24 @@
 
         <li>
           <a href="#" class="dropdown-toggle">
+            <i class="icon-user"></i>
+            <span class="menu-text"> 用户 </span>
+
+            <b class="arrow icon-angle-down"></b>
+          </a>
+
+          <ul class="submenu">
+            <li data-turbolinks="false">
+              <a href=<%= users_path %>>
+                <i class="icon-double-angle-right"></i>
+                用户
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#" class="dropdown-toggle">
             <i class="icon-bar-chart"></i>
             <span class="menu-text"> 优惠券 </span>
 
@@ -228,6 +264,23 @@
               <a href=<%= couponbats_path %>>
                 <i class="icon-double-angle-right"></i>
                 批量优惠券
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" class="dropdown-toggle">
+            <i class="icon-bar-chart"></i>
+            <span class="menu-text"> 客服 </span>
+
+            <b class="arrow icon-angle-down"></b>
+          </a>
+
+          <ul class="submenu">
+            <li data-turbolinks="false">
+              <a href=<%= cancelorders_path %>>
+                <i class="icon-double-angle-right"></i>
+                取消订单
               </a>
             </li>
           </ul>

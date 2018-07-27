@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180724060151) do
+ActiveRecord::Schema.define(version: 20180727093225) do
 
   create_table "artisancancelreasons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "reason"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "artisanextracts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "artisanuser_id"
+    t.string "ordernumber"
+    t.float "amount", limit: 24
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "children"
+    t.index ["artisanuser_id"], name: "index_artisanextracts_on_artisanuser_id"
   end
 
   create_table "artisanusers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -119,6 +129,8 @@ ActiveRecord::Schema.define(version: 20180724060151) do
     t.integer "lock_id"
     t.integer "product_id"
     t.string "brand"
+    t.bigint "projectdef_id"
+    t.index ["projectdef_id"], name: "index_bartaskdetails_on_projectdef_id"
   end
 
   create_table "bartaskproimages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -227,6 +239,12 @@ ActiveRecord::Schema.define(version: 20180724060151) do
     t.index ["couponbat_id"], name: "index_coupons_on_couponbat_id"
   end
 
+  create_table "distcoms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.float "distcom", limit: 24
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "eulas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "tile"
     t.text "eula"
@@ -265,6 +283,7 @@ ActiveRecord::Schema.define(version: 20180724060151) do
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "summary"
     t.index ["artisanuser_id"], name: "index_incomes_on_artisanuser_id"
   end
 
@@ -322,8 +341,29 @@ ActiveRecord::Schema.define(version: 20180724060151) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "profits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "ordernumber"
+    t.float "amount", limit: 24
+    t.string "summary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "projectdefs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "project"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "servicecaps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "servicecap"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "servicecoms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.float "base", limit: 24
+    t.float "percent", limit: 24
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -347,6 +387,16 @@ ActiveRecord::Schema.define(version: 20180724060151) do
     t.text "reason"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "userextracts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.string "ordernumber"
+    t.float "amount", limit: 24
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "children"
+    t.index ["user_id"], name: "index_userextracts_on_user_id"
   end
 
   create_table "userpayorders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -410,14 +460,17 @@ ActiveRecord::Schema.define(version: 20180724060151) do
     t.index ["artisanuser_id"], name: "index_withdrawpwds_on_artisanuser_id"
   end
 
+  add_foreign_key "artisanextracts", "artisanusers"
   add_foreign_key "bankcards", "artisanusers"
   add_foreign_key "bankcards", "bankcodes"
+  add_foreign_key "bartaskdetails", "projectdefs"
   add_foreign_key "bartaskproimages", "bartaskpros"
   add_foreign_key "cancelorders", "artisanusers"
   add_foreign_key "cancelorders", "users"
   add_foreign_key "coupons", "couponbats"
   add_foreign_key "fingers", "fingermodeldefs"
   add_foreign_key "incomes", "artisanusers"
+  add_foreign_key "userextracts", "users"
   add_foreign_key "widthdraws", "artisanusers"
   add_foreign_key "withdrawpwds", "artisanusers"
 end

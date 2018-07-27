@@ -56,8 +56,9 @@ class WxpaymentsController < ApplicationController
       if userpayorder.couponnumber.to_s != ''
         coupon = Coupon.find_by_couponnumber(userpayorder.couponnumber)
         coupon.alreadyused = 1
-        coupon.ordernumber = oudernumber
+        coupon.ordernumber = ordernumber
         coupon.save
+        Profit.create(ordernumber:ordernumber,amount:-coupon.facevalue,summary:'优惠券抵用')
       end
       userpayorder.status = 1
       userpayorder.save

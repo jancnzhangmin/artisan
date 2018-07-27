@@ -1,0 +1,2 @@
+class Distcom < ApplicationRecord
+end

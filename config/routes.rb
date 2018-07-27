@@ -62,6 +62,11 @@ Rails.application.routes.draw do
       get 'binduser'
       get 'getuserinfo'
       get 'getcoupon'
+      get 'getranking'
+      get 'set_artisan_area_server'
+      get 'getprojectdefs'
+      get 'get_artisan_incomes'
+      get 'get_user_extract'
     end
   end
   resources :getopenids do
@@ -100,6 +105,7 @@ Rails.application.routes.draw do
   resources :events do
     collection do
       get 'getqrcode'
+      post 'getevent'
     end
   end
   resources :couponbats do
@@ -108,5 +114,11 @@ Rails.application.routes.draw do
     end
     resources :allotusercoupons
   end
+  resources :users
+  resources :distcoms
+  resources :servicecoms
+  resources :projectdefs
+  resources :cancelorders
+
 
 end

@@ -7,8 +7,14 @@ class AllotusercouponsController < ApplicationController
     coupons.each do |f|
       userids.push f.user_id
     end
-    @alreadusers = User.where('id in (?) ',userids).paginate(:page => params[:page], :per_page => 10)
-    @users = User.where('id not in (?)',userids).paginate(:page => params[:page], :per_page => 10)
+    @alreadusers = User.where('id in (?)',userids).paginate(:page => params[:page], :per_page => 10)
+    if params[:search]
+      @alreadusers = @alreadusers.where('login like ?',"%#{params[:search]}%").paginate(:page => params[:page], :per_page => 10)
+    end
+    @users = User.where('id not in (?) and city like ?',userids,"%#{@couponbat.city}%").paginate(:page => params[:page], :per_page => 10)
+    if params[:search]
+      @users = @users.where('login like ?',"%#{params[:search]}%").paginate(:page => params[:page], :per_page => 10)
+    end
   end
 
   def new
@@ -18,7 +24,10 @@ class AllotusercouponsController < ApplicationController
     coupons.each do |f|
       userids.push f.user_id
     end
-    users = User.where('id not in (?)',userids)
+    users = User.where('id not in (?) and city like ?',userids,"%#{@couponbat.city}%")
+    if params[:search]
+      users = users.where('login like ?',"%#{params[:search]}%")
+    end
     temusersid = Array.new
     users.each do |f|
       temusersid.push f.id
@@ -34,6 +43,9 @@ class AllotusercouponsController < ApplicationController
         f.save
       end
     end
+    @couponbat.number = @couponbat.coupons.count
+    @couponbat.save
+
     redirect_to couponbat_allotusercoupons_path(params[:couponbat_id])
   end
 

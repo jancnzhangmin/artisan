@@ -4,4 +4,5 @@ class Bartaskdetail < ApplicationRecord
   has_and_belongs_to_many :barbasedefs
   belongs_to :lock
   belongs_to :product
+  belongs_to :projectdef
 end

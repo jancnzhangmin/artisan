@@ -5,6 +5,11 @@ class ApisController < ApplicationController
     render json: params[:callback]+'({"products":'+ products.to_json + '})',content_type: "application/javascript"
   end
 
+  def getprojectdefs
+    projectdefs = Projectdef.all
+    render json: params[:callback]+'({"projectdefs":'+ projectdefs.to_json + '})',content_type: "application/javascript"
+  end
+
   def getlocks
     locks = Lock.all
     render json: params[:callback]+'({"locks":'+ locks.to_json + '})',content_type: "application/javascript"
@@ -56,7 +61,7 @@ class ApisController < ApplicationController
     end
     if JSON.parse(params[:bartaskdetail])['rows'].count > 0
       JSON.parse(params[:bartaskdetail])['rows'].each do |row|
-        bartaskdetail = bartask.bartaskdetails.create(brand:row['brand'],product_id:row['product_id'],lock_id:row['lock_id'])
+        bartaskdetail = bartask.bartaskdetails.create(brand:row['brand'],product_id:row['product_id'],lock_id:row['lock_id'],projectdef_id:row['projectdef_id'])
         if row['productbaseid'].length > 0
           row['productbaseid'].each do |barbase|
             if barbase.to_s != ''
@@ -216,6 +221,7 @@ class ApisController < ApplicationController
     attr :created_at,true
     attr :updated_at,true
     attr :contact,true
+    attr :contactphone,true
     attr :contract,true
     attr :paytype,true
     attr :measurecount,true
@@ -232,11 +238,20 @@ class ApisController < ApplicationController
     attr :artisan,true
     attr :price,true
     attr :servicetype,true
+    attr :registrant,true
+    attr :summary,true
 
   end
 
   def getbartask
     user = User.find_by_openid(params[:openid])
+    bartasks = user.bartasks.where('status = 1')
+    bartasks.each do |f|
+      if f.installtime.to_s.length > 0 && Time.now - 1.days > f.installtime
+        f.status = -2
+        f.save
+      end
+    end
     bartasks = user.bartasks.order('id desc')
     bartaskarr = Array.new
     bartasks.each do |f|
@@ -288,6 +303,13 @@ class ApisController < ApplicationController
 
   def getartisanbartask
     user = Artisanuser.find_by_openid(params[:openid])
+    bartasks = Bartask.where('status = 1')
+    bartasks.each do |f|
+      if f.installtime.to_s.length > 0 && Time.now - 1.days > f.installtime
+        f.status = -2
+        f.save
+      end
+    end
     bartasks = Bartask.order('id desc')
     bartaskarr = Array.new
     bartasks.each do |f|
@@ -439,6 +461,7 @@ class ApisController < ApplicationController
     attr :product,true
     attr :lock,true
     attr :brand,true
+    attr :projectdef,true
   end
 
   class Barbaseclass
@@ -457,7 +480,31 @@ class ApisController < ApplicationController
 
   def getbartaskdetail
     bartask = Bartask.find(params[:id])
+    bartaskcla = Bartaskclass.new
+    bartaskcla.id = bartask.id
+    bartaskcla.user_id = bartask.user_id
+    bartaskcla.preprice = bartask.preprice
+    bartaskcla.province = bartask.province
+    bartaskcla.city = bartask.city
+    bartaskcla.district = bartask.district
+    bartaskcla.address = bartask.address
+    bartaskcla.status = bartask.status
+    bartaskcla.installtime = bartask.installtime
+    bartaskcla.ordernumber = bartask.ordernumber
+    bartaskcla.created_at = bartask.created_at
+    bartaskcla.updated_at = bartask.updated_at
+    bartaskcla.contact = bartask.contact
+    bartaskcla.contactphone = bartask.contactphone
+    bartaskcla.paytype = bartask.paytype
+    bartaskcla.registrant = ''
+    if bartask.user && bartask.user.login.to_s != ''
+      bartaskcla.registrant = bartask.user.login
+    end
+    bartaskcla.summary = bartask.summary
+
+
     bartaskdetails = bartask.bartaskdetails
+
     bartaskdetailarr = Array.new
     barbasedefarr = Array.new
     barincrementdefarr = Array.new
@@ -468,6 +515,11 @@ class ApisController < ApplicationController
       bartaskdetailcla.bartask_id = f.bartask_id
       bartaskdetailcla.product = Product.find(f.product_id).product
       bartaskdetailcla.lock = Lock.find(f.lock_id).lock
+      bartaskdetailcla.projectdef = ''
+      if f.projectdef
+        bartaskdetailcla.projectdef = f.projectdef.project
+      end
+      bartaskdetailcla.brand = f.brand
       bartaskdetailarr.push bartaskdetailcla
       barbasedefids = f.barbasedefs.ids
       barbasedefs = Barbasedef.all
@@ -513,7 +565,7 @@ class ApisController < ApplicationController
     end
     openlocks = bartask.openlocks
 
-    render json: params[:callback]+'({"bartask":' + bartask.to_json + ',"bartaskdetails":'+ bartaskdetailarr.to_json + ',"measures":' + measures.to_json + ',"transits":'+ transits.to_json + ',"openlocks":' + openlocks.to_json + ',"fingers":' + fingerarr.to_json + ',"barbasedefs":' +barbasedefarr.to_json + ',"barincrementdefs":' +barincrementdefarr.to_json + '})',content_type: "application/javascript"
+    render json: params[:callback]+'({"bartask":' + bartaskcla.to_json + ',"bartaskdetails":'+ bartaskdetailarr.to_json + ',"measures":' + measures.to_json + ',"transits":'+ transits.to_json + ',"openlocks":' + openlocks.to_json + ',"fingers":' + fingerarr.to_json + ',"barbasedefs":' +barbasedefarr.to_json + ',"barincrementdefs":' +barincrementdefarr.to_json + '})',content_type: "application/javascript"
   end
 
   def sendvcodesms
@@ -544,6 +596,26 @@ class ApisController < ApplicationController
       artisanuser.login = params[:phone]
       artisanuser.username = params[:name]
       artisanuser.save
+      coupons = Coupon.where("coupontype = 3 and user_id is null and artisanuser_id is null")
+      parent = artisanuser.user
+      if parent
+        coupons.each do |f|
+          if f.expirytype == 1 && f.assignexpiry > Time.now
+            f.artisanuser_id = artisanuser.id
+            f.user_id = parent.id
+            f.model = 2
+            f.save
+            break
+          elsif f.expirytype == 2
+            f.artisanuser_id = artisanuser.id
+            f.user_id = parent.id
+            f.assignexpiry = Time.now + f.fixedexpiry.days
+            f.model = 2
+            f.save
+            break
+          end
+        end
+      end
     end
     render json: params[:callback]+'({"status":'+ status.to_s + '})',content_type: "application/javascript"
   end
@@ -564,7 +636,16 @@ class ApisController < ApplicationController
 
   def getartisaninfo
     artisanuser = Artisanuser.find_by_openid(params[:openid])
-    render json: params[:callback]+'({"artisanuser":'+ artisanuser.to_json + '})',content_type: "application/javascript"
+    artisanusercla = Artisanuserclass.new
+    artisanusercla.id = artisanuser.id
+    artisanusercla.username = artisanuser.username
+    artisanusercla.headurl = artisanuser.headurl
+    artisanusercla.province = artisanuser.province
+    artisanusercla.city = artisanuser.city
+    artisanusercla.score = Userpayorder.where('artisanuser_id = ? and score is not null',artisanuser.id).average('score')
+    artisanusercla.ordercount = Userpayorder.where('artisanuser_id = ? and status = 1',artisanuser.id).count
+
+    render json: params[:callback]+'({"artisanuser":'+ artisanusercla.to_json + '})',content_type: "application/javascript"
   end
 
   class Eulaclass
@@ -657,6 +738,10 @@ class ApisController < ApplicationController
       else
         artisanusercla.iscollection = 0
       end
+
+      artisanusercla.score = Userpayorder.where('artisanuser_id = ? and score is not null',f.id).average('score')
+      artisanusercla.ordercount = Userpayorder.where('artisanuser_id = ? and status = 1',f.id).count
+
       artisanuserarr.push artisanusercla
     end
 
@@ -811,7 +896,22 @@ class ApisController < ApplicationController
     if coupon
       price += coupon.facevalue
     end
-    artisanuser.incomes.create(amount:price,bartaskorder:bartask.ordernumber,status:1)
+    servicecom = Servicecom.first
+    serviceamount = servicecom.base + servicecom.percent / 100.0 * price
+    if serviceamount > 0
+      Profit.create(ordernumber:bartask.ordernumber,amount:serviceamount,summary:'订单提成')
+    end
+    distcom = Distcom.first
+    distamount = distcom.distcom / 100.0 * price
+    if artisanuser.parent && distamount > 0
+      artisanuser.parent.artisanextacts.create(ordernumber:bartask.ordernumber,amount:distamount,children:artisanuser.id)
+      Profit.create(amount:-distamount,summary:'技工推荐分销提成')
+    elsif artisanuser.user && distamount > 0
+      artisanuser.user.userextracts.create(ordernumber:bartask.ordernumber,amount:distamount,children:artisanuser.id)
+      Profit.create(amount:-distamount,summary:'用户推荐推荐分销提成')
+    end
+    artisanuser.incomes.create(amount:-serviceamount,bartaskorder:bartask.ordernumber,status:1,summary:'平台服务费')
+    artisanuser.incomes.create(amount:price,bartaskorder:bartask.ordernumber,status:1,summary:'收入')
     render json: params[:callback]+'({"status":"200"})',content_type: "application/javascript"
   end
 
@@ -819,7 +919,7 @@ class ApisController < ApplicationController
     artisanuser = Artisanuser.find_by_openid(params[:openid])
     income = artisanuser.incomes.sum('amount')
     withdraw = artisanuser.widthdraws.sum('amount')
-    ava = income - withdraw
+    ava = income - withdraw + artisanuser.artisanextracts.sum('amount')
     render json: params[:callback]+'({"avaamount":'+ ava.to_s + '})',content_type: "application/javascript"
   end
 
@@ -1016,6 +1116,10 @@ class ApisController < ApplicationController
     attr :conceptscore,true
     attr :attitudescore,true
     attr :iscollection,true
+    attr :ordercount,true
+    attr :province,true
+    attr :city,true
+    attr :district,true
   end
 
   def getartisanuser
@@ -1074,6 +1178,23 @@ class ApisController < ApplicationController
       user.city = params[:city]
       user.district = params[:district]
       user.save
+
+      ##########注册领取##############
+      coupons = Coupon.where("coupontype = 1 and city like ?","%#{user.city}%")
+      coupons.each do |f|
+        if f.expirytype == 1 && f.assignexpiry > Time.now
+          f.user_id = user.id
+          f.save
+          break
+        elsif f.expirytype == 2
+          f.user_id = user.id
+          f.assignexpiry = Time.now + f.fixedexpiry.days
+          f.save
+          break
+        end
+      end
+      #############注册领取END ############
+
     end
     render json: params[:callback]+'({"status":'+ status.to_s + '})',content_type: "application/javascript"
   end
@@ -1083,10 +1204,167 @@ class ApisController < ApplicationController
     render json: params[:callback]+'({"user":'+ user.to_json + '})',content_type: "application/javascript"
   end
 
+  class Couponclass
+    attr :id,true
+    attr :couponbat_id,true
+    attr :user_id,true
+    attr :artisanuser_id,true
+    attr :model,true
+    attr :facevalue,true
+    attr :condition,true
+    attr :expirytype,true
+    attr :assignexpiry,true
+    attr :fixedexpiry,true
+    attr :ordernumber,true
+    attr :alreadyused,true
+    attr :name,true
+    attr :couponnumber,true
+    attr :summary,true
+    attr :status,true
+    attr :coupontype,true
+    attr :city,true
+    attr :artisan,true
+  end
+
   def getcoupon
     user = User.find_by_openid(params[:openid])
     coupons = Coupon.where('user_id = ? and alreadyused = 0 and assignexpiry > ?',user.id,Time.now)
-    render json: params[:callback]+'({"coupons":'+ coupons.to_json + '})',content_type: "application/javascript"
+    couponarr = Array.new
+    coupons.each do |f|
+      couponcla = Couponclass.new
+      couponcla.id = f.id
+      couponcla.couponbat_id = f.couponbat_id
+      couponcla.user_id = f.user_id
+      couponcla.artisanuser_id = f.artisanuser_id
+      couponcla.model = f.model
+      couponcla.facevalue = f.facevalue
+      couponcla.condition = f.condition
+      couponcla.expirytype = f.expirytype
+      couponcla.assignexpiry = f.assignexpiry
+      couponcla.fixedexpiry = f.fixedexpiry
+      couponcla.ordernumber = f.ordernumber
+      couponcla.alreadyused = f.alreadyused
+      couponcla.name = f.name
+      couponcla.couponnumber = f.couponnumber
+      couponcla.summary = f.summary
+      couponcla.status = f.status
+      couponcla.coupontype = f.coupontype
+      couponcla.city = f.city
+      if f.artisanuser_id.to_s != ''
+        couponcla.artisan = Artisanuser.find(f.artisanuser_id).username
+      else
+        couponcla.artisan = ''
+      end
+      couponarr.push couponcla
+    end
+    render json: params[:callback]+'({"coupons":'+ couponarr.to_json + '})',content_type: "application/javascript"
+  end
+
+  class Rankingclass
+    attr :country,true
+    attr :province,true
+    attr :city,true
+    attr :district,true
+    attr :countrylist,true
+    attr :provincelist,true
+    attr :citylist,true
+    attr :districtlist,true
+  end
+
+  class Rankingclass
+    attr :id,true
+    attr :username,true
+    attr :headurl,true
+    attr :aver,true
+    attr :city,true
+  end
+
+  def getranking
+    artisanuser = Artisanuser.find_by_openid(params[:openid])
+    #artisanuser = Artisanuser.find(1)
+    countryarr = Array.new
+    artisanusers = Artisanuser.all
+    artisanusers.each do |f|
+      country = Rankingclass.new
+      score = Userpayorder.where('artisanuser_id = ? and score is not null and status = 1',f.id).average('score').to_f
+      amount = Userpayorder.where('artisanuser_id = ? and score is not null and status = 1',f.id).sum('price').to_f
+      aver = score * amount
+      country.id = f.id
+      if f.username.to_s.length > 0
+        country.username = f.username[0].ljust(f.username.length,'*')
+      end
+      country.headurl = f.headurl
+      country.city = f.city
+      country.aver = aver
+      countryarr.push country
+    end
+    countryarr.sort_by!{|k|k.aver}
+    countryarr.reverse!
+    mycountry = 0
+    countryarr.each do |f|
+      mycountry += 1
+      if f.id == artisanuser.id
+        break
+      end
+    end
+
+    render json: params[:callback]+'({"country":' + countryarr[0..4].to_json + ',"mycountry":' + mycountry.to_s + '})',content_type: "application/javascript"
+  end
+
+  def set_artisan_area_server
+    artisanuser = Artisanuser.find_by_openid(params[:openid])
+    artisanuser.province = params[:province]
+    artisanuser.city = params[:city]
+    artisanuser.save
+    render json: params[:callback]+'({"status":"200"})',content_type: "application/javascript"
+  end
+
+  def get_artisan_incomes
+    artisanuser = Artisanuser.find_by_openid(params[:openid])
+    incomes = artisanuser.incomes.order('id desc')
+    render json: params[:callback]+'({"incomes":'+ incomes.to_json + '})',content_type: "application/javascript"
+  end
+
+  class Extractclass
+    attr :id,true
+    attr :headurl,true
+    attr :amount,true
+    attr :name,true
+  end
+
+  def get_artisan_extract
+    artisanuser = Artisanuser.find_by_openid(params[:openid])
+    extracts = artisanuser.extracts
+    artisanuseridarr = Array.new
+    extracts.each do |f|
+      artisanuseridarr.push Userpayorder.find_by_ordernumber(f.ordernumber).artisanuser_id
+    end
+    artisanuseridarr.uniq!
+  end
+
+  def get_user_extract
+    user = User.find_by_openid(params[:openid])
+    extracts = user.userextracts
+    useridarr = Array.new
+    extracts.each do |f|
+      useridarr.push f.children
+    end
+    useridarr.uniq!
+    extractarr = Array.new
+    useridarr.each do |f|
+      extractcla = Extractclass.new
+      temuser = Artisanuser.find(f)
+      extractcla.id = temuser.id
+      extractcla.headurl = temuser.headurl
+      extractcla.name = ''
+      if temuser.to_s != ''
+        extractcla.name = temuser.username[0].ljust(temuser.username.length,'*')
+      end
+      extractcla.amount = Userextract.where('children = ?',f).sum('amount')
+
+      extractarr.push extractcla
+    end
+    render json: params[:callback]+'({"extracts":'+ extractarr.to_json + '})',content_type: "application/javascript"
   end
 
   private

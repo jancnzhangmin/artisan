@@ -1,0 +1,21 @@
+<%= form_with(model:distcom,local:false, :html => {:class=>'form-horizontal m-t',:multipart => true}) do |f| %>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 分销提成 </label>
+      <div class="col-sm-9">
+        <%= f.text_field :distcom,class:"col-xs-10 col-sm-5" %>
+        <span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle">%</span>
+											</span>
+      </div>
+    </div>
+
+    <div class="clearfix form-actions">
+      <div class="col-md-offset-3 col-md-9">
+        <button type="submit" name="commit" value="保存" class="btn btn-info" data-disable-with="保存" id="submit">
+          <i class="icon-ok bigger-110"></i>
+          保存
+        </button>
+      </div>
+    </div>
+<% end %>

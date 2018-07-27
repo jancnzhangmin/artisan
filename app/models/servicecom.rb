@@ -1,0 +1,2 @@
+class Servicecom < ApplicationRecord
+end

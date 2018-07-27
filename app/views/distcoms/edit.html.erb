@@ -1,0 +1,23 @@
+<%= render 'layerbegin' %>
+<div class="page-content">
+  <div class="page-header">
+    <h1>
+      分销提成
+    </h1>
+  </div><!-- /.page-header -->
+  <div class="alert alert-success" style="display: none;">
+    <button type="button" class="close" data-dismiss="alert">
+      <i class="icon-remove"></i>
+    </button>
+
+
+    数据保存成功
+
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <%= render 'form', distcom: @distcom %>
+    </div>
+  </div>
+</div>
+<%= render 'layerend' %>

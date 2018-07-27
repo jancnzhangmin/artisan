@@ -1,9 +1,11 @@
 class EventsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  def index
+
+  def getevent
     #render json: params[:echostr].to_s
     $client ||= WeixinAuthorize::Client.new("wxb3d1ca1df413ce9d", "c4a1d6d2a1b5af73a6666e1308e61595")
     result = Hash.from_xml(request.body.read)["xml"]
+    Testlog.create(log:result)
     user_info = $client.user(result['FromUserName'])
 
     artisanuser = Artisanuser.find_by_openid(result['FromUserName'])
@@ -46,6 +48,10 @@ class EventsController < ApplicationController
       end
     end
     render json:'SUCCESS'
+  end
+
+  def index
+
   end
 
   def getqrcode

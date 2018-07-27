@@ -36,6 +36,11 @@ class CouponbatsController < ApplicationController
       thcount += 1
     end
 
+    loopcount = 1000
+    if couponbat_params[:number].to_i < 1000
+      loopcount = couponbat_params[:number].to_i
+    end
+
     ######券号最大值#######
     #maxcoupon_number = couponbat_params[:prefix]
     le = couponbat_params[:digit].to_s.length - couponbat_params[:prefix].to_s.length - couponbat_params[:number].to_s.length
@@ -57,7 +62,7 @@ class CouponbatsController < ApplicationController
 
       #end
       temcouponarr = Array.new
-      1000.times do
+      loopcount.times do
         temstep += 1
 
         temstr = couponbat_params[:prefix].to_s
@@ -84,7 +89,7 @@ class CouponbatsController < ApplicationController
       end
       Coupon.transaction do
         step = i * 1000
-        1000.times do
+        loopcount.times do
           step += 1
           progress = (step.to_f / couponbat_params[:number].to_f) * 100.0
           $redis.set("progress", progress)
@@ -221,7 +226,7 @@ class CouponbatsController < ApplicationController
     coupons = @couponbat.coupons
     delcouponids = Array.new
     coupons.each do |f|
-      if f.user_id.to_s == '' && f.artisanuser_id.to_s == '' && f.alreadyused == 0
+      if f.user_id.to_s != '' || f.artisanuser_id.to_s != '' || f.alreadyused == 0
         delcouponids.push f.id
       end
     end
