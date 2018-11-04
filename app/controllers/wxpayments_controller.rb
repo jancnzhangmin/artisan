@@ -19,7 +19,7 @@ class WxpaymentsController < ApplicationController
         out_trade_no: ordernumber,
         total_fee: (fee.to_f * 100).to_i,
         spbill_create_ip:  '127.0.0.1',
-        notify_url: 'http://artisan.liushushu.com/wxpayments/notify',
+        notify_url: 'http://artisan.ysdsoft.com/wxpayments/notify',
         trade_type: 'JSAPI', # could be "JSAPI", "NATIVE" or "APP",
         openid: params[:openid]  # required when trade_type is `JSAPI`
     }

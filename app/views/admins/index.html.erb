@@ -1,0 +1,107 @@
+<%= render 'layerbegin' %>
+
+
+<style>
+    .btn-transparent {
+        background-color: transparent !important;
+        border-color: transparent;
+        color:#6fb3e0;
+    }
+</style>
+
+
+
+<div class="page-content">
+  <div class="page-header">
+    <h1>
+      管理员列表
+    </h1>
+  </div><!-- /.page-header -->
+
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- PAGE CONTENT BEGINS -->
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="table-responsive">
+            <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+              <thead>
+              <tr>
+                <th class="text-center">姓名</th>
+                <th class="text-center">账号</th>
+                <th class="text-center">状态</th>
+                <th class="text-center">操作</th>
+
+
+
+              </tr>
+              </thead>
+
+              <tbody>
+              <% @admins.each do |admin| %>
+                  <tr>
+                    <td>
+                      <%= admin.name %>
+                    </td>
+                    <td>
+                      <%= admin.login %>
+                    </td>
+
+                    <td>
+                      <% if admin.status == 1 %>
+                          <span class="blue">正常</span>
+                      <% else %>
+                          <span class="red">停用</span>
+                      <% end %>
+                    </td>
+                    <td>
+                      <div class="visible-md visible-lg hidden-sm hidden-xs btn-group" data-turbolinks="false">
+                        <a class="btn btn-xs btn-warning" href=<%= edit_admin_path(admin) %>>
+                          <i class="icon-edit bigger-120"></i>
+                          编辑
+                        </a>
+                        <a class="btn btn-xs btn-danger" data-confirm="Are you sure?" data-method="delete" href=<%= admin_path(admin) %>>
+                          <i class="icon-trash bigger-120"></i>
+                          删除
+                        </a>
+                      </div>
+
+                    </td>
+                  </tr>
+              <% end %>
+
+
+
+
+
+
+
+
+              </tbody>
+            </table>
+          </div><!-- /.table-responsive -->
+
+          <div class="visible-md visible-lg btn-group pull-right" data-turbolinks="false">
+            <a class="btn btn-info" href=<%= new_admin_path %>>
+              <i class="fa fa-plus"></i>
+              新增管理员
+            </a>
+          </div>
+
+        </div><!-- /span -->
+      </div><!-- /row -->
+
+      <div data-turbolinks="false" class="text-center">
+        <%= will_paginate @admins, renderer: BootstrapPagination::Rails %>
+      </div>
+
+
+
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+</div><!-- /.page-content -->
+
+
+
+<% render 'layerend' %>

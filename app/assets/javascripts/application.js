@@ -32,4 +32,5 @@
 //= require kindeditor
 //= require date-time/bootstrap-datetimepicker.min
 //= require date-time/locales/bootstrap-datetimepicker.zh-CN
+//= require jquery.validate.min
 // require_tree .

@@ -27,126 +27,130 @@ class ApisController < ApplicationController
 
   def setbartask
     user = User.find_by_openid(JSON.parse(params[:bartask])['rows'][0]['openid'])
+    ordernumber = Time.now.strftime('%Y%m%d%H%M%S') + user.id.to_s
 
-    bartask = user.bartasks.create(preprice:JSON.parse(params[:bartask])['rows'][0]['preprice'].to_f,
-                                   province:JSON.parse(params[:bartask])['rows'][0]['province'],
-                                   city:JSON.parse(params[:bartask])['rows'][0]['city'],
-                                   district:JSON.parse(params[:bartask])['rows'][0]['district'],
-                                   address:JSON.parse(params[:bartask])['rows'][0]['address'],
-                                   status:1,
-                                   installtime:JSON.parse(params[:bartask])['rows'][0]['installtime'],
-                                   ordernumber:Time.now.strftime('%Y%m%d%H%M%S') + user.id.to_s,
-                                   contact:JSON.parse(params[:bartask])['rows'][0]['contact'],
-                                   contactphone:JSON.parse(params[:bartask])['rows'][0]['contactphone'],
-                                   summary:JSON.parse(params[:bartask])['rows'][0]['summary'],
-                                   paytype:JSON.parse(params[:bartask])['rows'][0]['paytype']
-    )
-    if JSON.parse(params[:measure])['rows'].count > 0
-      JSON.parse(params[:measure])['rows'].each do |row|
-        bartask.measures.create(doorset:row['doorset'],
-                                isfloorheat:row['isfloorheat'],
-                                idding:row['isding'],
-                                openinout:row['openinout'],
-                                openleftright:row['openleftright'],
-                                summary:row['summary']
-        )
+    hasordernumber = Bartask.find_by_ordernumber(ordernumber)
+    if !hasordernumber
+      bartask = user.bartasks.create(preprice:JSON.parse(params[:bartask])['rows'][0]['preprice'].to_f,
+                                     province:JSON.parse(params[:bartask])['rows'][0]['province'],
+                                     city:JSON.parse(params[:bartask])['rows'][0]['city'],
+                                     district:JSON.parse(params[:bartask])['rows'][0]['district'],
+                                     address:JSON.parse(params[:bartask])['rows'][0]['address'],
+                                     status:1,
+                                     installtime:JSON.parse(params[:bartask])['rows'][0]['installtime'],
+                                     ordernumber:Time.now.strftime('%Y%m%d%H%M%S') + user.id.to_s,
+                                     contact:JSON.parse(params[:bartask])['rows'][0]['contact'],
+                                     contactphone:JSON.parse(params[:bartask])['rows'][0]['contactphone'],
+                                     summary:JSON.parse(params[:bartask])['rows'][0]['summary'],
+                                     paytype:JSON.parse(params[:bartask])['rows'][0]['paytype']
+      )
+      if JSON.parse(params[:measure])['rows'].count > 0
+        JSON.parse(params[:measure])['rows'].each do |row|
+          bartask.measures.create(doorset:row['doorset'],
+                                  isfloorheat:row['isfloorheat'],
+                                  idding:row['isding'],
+                                  openinout:row['openinout'],
+                                  openleftright:row['openleftright'],
+                                  summary:row['summary']
+          )
+        end
       end
-    end
-    if JSON.parse(params[:transit])['rows'].count > 0
-      JSON.parse(params[:transit])['rows'].each do |row|
-        bartask.transits.create(start:row['startprovince'].to_s + row['startcity'].to_s + row['startdistrict'].to_s + row['startaddress'].to_s,
-                                end:row['endprovince'].to_s + row['endcity'].to_s + row['enddistrict'].to_s + row['endaddress'].to_s
-        )
+      if JSON.parse(params[:transit])['rows'].count > 0
+        JSON.parse(params[:transit])['rows'].each do |row|
+          bartask.transits.create(start:row['startprovince'].to_s + row['startcity'].to_s + row['startdistrict'].to_s + row['startaddress'].to_s,
+                                  end:row['endprovince'].to_s + row['endcity'].to_s + row['enddistrict'].to_s + row['endaddress'].to_s
+          )
+        end
       end
-    end
-    if JSON.parse(params[:bartaskdetail])['rows'].count > 0
-      JSON.parse(params[:bartaskdetail])['rows'].each do |row|
-        bartaskdetail = bartask.bartaskdetails.create(brand:row['brand'],product_id:row['product_id'],lock_id:row['lock_id'],projectdef_id:row['projectdef_id'])
-        if row['productbaseid'].length > 0
-          row['productbaseid'].each do |barbase|
-            if barbase.to_s != ''
-              bartaskdetail.barbasedefs << Barbasedef.find(barbase)
+      if JSON.parse(params[:bartaskdetail])['rows'].count > 0
+        JSON.parse(params[:bartaskdetail])['rows'].each do |row|
+          bartaskdetail = bartask.bartaskdetails.create(brand:row['brand'],product_id:row['product_id'],lock_id:row['lock_id'],projectdef_id:row['projectdef_id'])
+          if row['productbaseid'].length > 0
+            row['productbaseid'].each do |barbase|
+              if barbase.to_s != ''
+                bartaskdetail.barbasedefs << Barbasedef.find(barbase)
+              end
+            end
+          end
+          if row['productincrementid'].length > 0
+            row['productincrementid'].each do |barincrement|
+              if barincrement.to_s != ''
+                bartaskdetail.barincrementdefs << Barincrementdef.find(barincrement)
+              end
             end
           end
         end
-        if row['productincrementid'].length > 0
-          row['productincrementid'].each do |barincrement|
-            if barincrement.to_s != ''
-              bartaskdetail.barincrementdefs << Barincrementdef.find(barincrement)
-            end
-          end
+      end
+
+      if JSON.parse(params[:finger])['rows'].count > 0
+        JSON.parse(params[:finger])['rows'].each do |row|
+          bartask.fingers.create(model:row['model'],summary:row['summary'],fingermodeldef_id:row['fingermodeldef_id'])
         end
       end
-    end
 
-    if JSON.parse(params[:finger])['rows'].count > 0
-      JSON.parse(params[:finger])['rows'].each do |row|
-        bartask.fingers.create(model:row['model'],summary:row['summary'],fingermodeldef_id:row['fingermodeldef_id'])
+      if JSON.parse(params[:openlock])['rows'].count > 0
+        JSON.parse(params[:openlock])['rows'].each do |row|
+          bartask.openlocks.create(summary:row['summary'])
+        end
       end
-    end
 
-    if JSON.parse(params[:openlock])['rows'].count > 0
-      JSON.parse(params[:openlock])['rows'].each do |row|
-        bartask.openlocks.create(summary:row['summary'])
+      measurecount = bartask.measures.count
+      fingercount = bartask.fingers.count
+      transitcount = bartask.transits.count
+      bartaskdetailcount = bartask.bartaskdetails.count
+      openlockcount = bartask.openlocks.count
+      #debugger
+      servicetype = ''
+      if measurecount > 0
+        servicetype = servicetype + '测量'
       end
-    end
-
-    measurecount = bartask.measures.count
-    fingercount = bartask.fingers.count
-    transitcount = bartask.transits.count
-    bartaskdetailcount = bartask.bartaskdetails.count
-    openlockcount = bartask.openlocks.count
-    #debugger
-    servicetype = ''
-    if measurecount > 0
-      servicetype = servicetype + '测量'
-    end
-    if transitcount > 0
-      servicetype = servicetype + '运输'
-    end
-    if bartaskdetailcount > 0
-      servicetype = servicetype + '安装'
-    end
-    if openlockcount > 0
-      servicetype = servicetype + '维修 开锁'
-    end
-    if fingercount > 0
-      finger = bartask.fingers.first.fingermodeldef
-      if finger
-        servicetype = servicetype + finger.model
+      if transitcount > 0
+        servicetype = servicetype + '运输'
       end
-    end
+      if bartaskdetailcount > 0
+        servicetype = servicetype + '安装'
+      end
+      if openlockcount > 0
+        servicetype = servicetype + '维修 开锁'
+      end
+      if fingercount > 0
+        finger = bartask.fingers.first.fingermodeldef
+        if finger
+          servicetype = servicetype + finger.model
+        end
+      end
 
 
-    data={
-        "first": {
-            "value":"您有新的订单",
-            "color":"#173177"
-        },
-        "tradeDateTime":{
-            "value":Time.now.strftime('%Y-%m-%d %H:%M:%S')
-        },
-        "orderType": {
-            "value":servicetype
-        },
-        "customerInfo":{
-            "value":bartask.province + bartask.city + bartask.district
-        },
-        "orderItemName":{
-            "value":'服务时间'
-        },
-        "orderItemData":{
-            "value":bartask.installtime.strftime('%Y-%m-%d')
-        },
-        "remark":{
-            "value":''
-        }
-    }
+      data={
+          "first": {
+              "value":"您有新的订单",
+              "color":"#173177"
+          },
+          "tradeDateTime":{
+              "value":Time.now.strftime('%Y-%m-%d %H:%M:%S')
+          },
+          "orderType": {
+              "value":servicetype
+          },
+          "customerInfo":{
+              "value":bartask.province + bartask.city + bartask.district
+          },
+          "orderItemName":{
+              "value":'服务时间'
+          },
+          "orderItemData":{
+              "value":bartask.installtime.strftime('%Y-%m-%d')
+          },
+          "remark":{
+              "value":''
+          }
+      }
 
-    artisanusers = Artisanuser.all
-    artisanusers.each do |artisanuser|
-      #sendwxsms(artisanuser.openid,'ZP0GkSHfDhCEvlbQYl2t8A3JahxPB7ScyF_ZSzqOJm8','http://artisan.liushushu.com/getartisanuseropenids',data)
-      SendwxmessageJob.perform_later(artisanuser.openid,'ZP0GkSHfDhCEvlbQYl2t8A3JahxPB7ScyF_ZSzqOJm8','http://artisan.liushushu.com/getartisanuseropenids',data)
+      artisanusers = Artisanuser.all
+      artisanusers.each do |artisanuser|
+        #sendwxsms(artisanuser.openid,'ZP0GkSHfDhCEvlbQYl2t8A3JahxPB7ScyF_ZSzqOJm8','http://artisan.liushushu.com/getartisanuseropenids',data)
+        SendwxmessageJob.perform_later(artisanuser.openid,'ZP0GkSHfDhCEvlbQYl2t8A3JahxPB7ScyF_ZSzqOJm8','http://artisan.ysdsoft.com/getartisanuseropenids',data)
+      end
     end
 
     render json:'{"status":"200"}'
@@ -964,21 +968,22 @@ class ApisController < ApplicationController
       withdrawpwd = withdrawpwds.first.try(:authenticate, params[:password])
       if withdrawpwd
         nonce=SecureRandom.uuid.tr('-', '')
+        tradeno = Time.now.strftime('%Y%m%d%H%M%S') + artisanuser.id.to_s
         payment_params={
             nonce_str:nonce,
-            partner_trade_no:Time.now.strftime('%Y%m%d%H%M%S') + artisanuser.id.to_s,
+            partner_trade_no:tradeno,
             openid:params[:openid],
             check_name:'NO_CHECK',
             amount:(params[:amount].to_f * 100).to_i,
-            desc:'付款',
+            desc:'刘叔叔装门平台提现',
             spbill_create_ip:'127.0.0.1'
         }
         @result = WxPay::Service.invoke_transfer(payment_params)
         #debugger
         if @result["result_code"]=="SUCCESS"
           status = 3
-          withdraws = artisanuser.withdraws
-          withdraws.create(amount:params[:amount].to_f)
+          withdraws = artisanuser.widthdraws
+          withdraws.create(amount:params[:amount].to_f,withdrawto:0,summary:'提现成功',tradeno:tradeno)
           #render json: params[:callback]+'({"status":"1","withdraw":'+withdraws.to_json+'})',content_type: "application/javascript"
         else
           status = 2
@@ -1067,9 +1072,11 @@ class ApisController < ApplicationController
 
   def getwithdrawrecord
     artisanuser = Artisanuser.find_by_openid(params[:openid])
-    withdraws = artisanuser.widthdraws
+    withdraws = artisanuser.widthdraws.order('id desc')
     withdraws.each do |f|
-      querybank(f.tradeno)
+      if f.withdrawto == 1
+        querybank(f.tradeno)
+      end
     end
     render json: params[:callback]+'({"withdraws":'+ withdraws.to_json + '})',content_type: "application/javascript"
   end

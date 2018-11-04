@@ -80,7 +80,7 @@ class ApplicationController < ActionController::Base
     end
     temid = '1' + temid
     #前缀1技工 前缀2用户
-    qrcode = RQRCode::QRCode.new("http://artisan.liushushu.com/events/getqrcode?id=" + temid)
+    qrcode = RQRCode::QRCode.new("http://artisan.ysdsoft.com/events/getqrcode?id=" + temid)
     #qrcode = RQRCode::QRCode.new("http://192.168.1.102:3000/events/getqrcode?id=" + artisanuserid.to_s)
 # With default options specified explicitly
     png = qrcode.as_png(
@@ -120,7 +120,7 @@ class ApplicationController < ActionController::Base
     end
     temid = '2' + temid
     #前缀1技工 前缀2用户
-    qrcode = RQRCode::QRCode.new("http://artisan.liushushu.com/events/getqrcode?id=" + temid)
+    qrcode = RQRCode::QRCode.new("http://artisan.ysdsoft.com/events/getqrcode?id=" + temid)
     #qrcode = RQRCode::QRCode.new("http://192.168.1.102:3000/events/getqrcode?id=" + artisanuserid.to_s)
     # With default options specified explicitly
     png = qrcode.as_png(

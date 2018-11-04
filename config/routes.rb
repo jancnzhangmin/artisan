@@ -119,6 +119,18 @@ Rails.application.routes.draw do
   resources :servicecoms
   resources :projectdefs
   resources :cancelorders
+  resources :logins
+  resources :admins do
+    collection do
+      get 'checkuser'
+    end
+  end
+  resources :payusers do
+    collection do
+      get 'pay'
+    end
+  end
+
 
 
 end

@@ -1,4 +1,4 @@
-source 'https://gems.ruby-china.org'
+source 'https://gems.ruby-china.com'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -19,6 +19,7 @@ gem 'rails_kindeditor'
 gem 'openssl-oaep'
 gem 'rqrcode'
 gem 'rmagick'
+gem 'rucaptcha'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'

@@ -16,6 +16,7 @@ class CouponbatsController < ApplicationController
 
   def create
 
+
     couponbat = Couponbat.create(name:couponbat_params[:name],
                                   number:couponbat_params[:number],
                                   facevalue:couponbat_params[:facevalue],
@@ -27,78 +28,57 @@ class CouponbatsController < ApplicationController
                                   summary:couponbat_params[:summary],
                                   city:couponbat_params[:city]
     )
-
-
-    $redis.set("progress", 0)
-    $redis.set("progressstep", 0)
-    thcount = couponbat_params[:number].to_i / 1000
-    if (couponbat_params[:number].to_i % 1000) > 0
+    min = couponbat_params[:digit].to_i
+    temmax = couponbat_params[:prefix].ljust(min,'9')
+    min = couponbat_params[:prefix].ljust(min,'0')
+    min = checkmin(min.to_i,temmax.to_i) - 1
+    max = min + couponbat_params[:number].to_i - 1
+    if max > temmax.to_i
+      max = temmax.to_i
+    end
+    thcount = (max - min) / 100
+    if ((max - min) % 100) > 0
       thcount += 1
     end
 
-    loopcount = 1000
-    if couponbat_params[:number].to_i < 1000
-      loopcount = couponbat_params[:number].to_i
+    loopcount = 100
+    if (max - min) < 100
+      loopcount = (max - min) + 1
     end
 
     ######券号最大值#######
-    #maxcoupon_number = couponbat_params[:prefix]
-    le = couponbat_params[:digit].to_s.length - couponbat_params[:prefix].to_s.length - couponbat_params[:number].to_s.length
-    lestr = ''
-    le.times do
-      lestr += '0'
-    end
-    maxcoupon_number = couponbat_params[:prefix].to_s + lestr + couponbat_params[:number].to_s
-
+    maxcoupon_number = max.to_s
     ######券号最大值END#######
 
-    tharr = Array.new
     thcount.times do |i|
-
-      temstep = i * 1000
-
-      #mutex.synchronize do
-
-
-      #end
+      temstep = i * 100
       temcouponarr = Array.new
       loopcount.times do
         temstep += 1
-
-        temstr = couponbat_params[:prefix].to_s
-        temlength = couponbat_params[:digit].to_i - temstr.length - temstep.to_s.length
-        temlength.times do
-          temstr += '0'
-        end
-        temstr += temstep.to_s
+        temstr = (min + temstep).to_s
         if temstr.to_i <= maxcoupon_number.to_i
           temcouponarr.push temstr
         end
       end
-
       temcouponnumberarr = Array.new
       temcoupon_couponnumbers = Coupon.where('couponnumber in (?)',temcouponarr)
       temcoupon_couponnumbers.each do |f|
         temcouponnumberarr.push f.couponnumber
       end
-      temcoupon_couponnumbers = nil
-
       coupbat_model = 1
       if couponbat_params[:coupontype] == 3
         coupbat_model = 2
       end
       Coupon.transaction do
-        step = i * 1000
+        step = i * 100
+
+        #sqlstr = 'INSERT INTO coupons(model, facevalue,condition,expirytype,assignexpiry,fixedexpiry,alreadyused,name,couponnumber,summary,status,coupontype,city,couponbat_id) values'
+        #sqlvalue = ''
         loopcount.times do
           step += 1
-          progress = (step.to_f / couponbat_params[:number].to_f) * 100.0
+          progress = (step.to_f / (max - min)) * 100.0
           $redis.set("progress", progress)
-          str = couponbat_params[:prefix].to_s
-          temlength = couponbat_params[:digit].to_i - str.length - step.to_s.length
-          temlength.times do
-            str += '0'
-          end
-          str += step.to_s
+          str = (min + step).to_s
           if temcouponnumberarr.count(str) == 0
             couponbat.coupons.create(model:coupbat_model,
                                       facevalue:couponbat_params[:facevalue],
@@ -114,91 +94,34 @@ class CouponbatsController < ApplicationController
                                       coupontype:couponbat_params[:coupontype],
                                       city:couponbat_params[:city]
             )
+            # sqlvalue += '('
+            # sqlvalue += couponbat_params[:facevalue] +','
+            # sqlvalue += couponbat_params[:condition] +','
+            # sqlvalue += couponbat_params[:expirytype] +','
+            # sqlvalue += couponbat_params[:assignexpiry] +','
+            # sqlvalue += couponbat_params[:fixedexpiry] +','
+            # sqlvalue += '0,'
+            # sqlvalue += couponbat_params[:name] +','
+            # sqlvalue += str +','
+            # sqlvalue += couponbat_params[:summary] +','
+            # sqlvalue += '1,'
+            # sqlvalue += couponbat_params[:coupontype] +','
+            # sqlvalue += couponbat_params[:city]
+            # sqlvalue += couponbat.id.to_s
+            # sqlvalue += '),'
           end
         end
+        #sqlstr += sqlvalue.chop!
+        #Coupon.find_by_sql(sqlstr)
+
       end
-      temcouponnumberarr.clear
-
-
     end
-    couponbat.numbegin = couponbat.coupons.minimum('couponnumber')
-    couponbat.numend = couponbat.coupons.maximum('couponnumber')
+    couponbat.numbegin = couponbat.coupons.first.couponnumber
+    couponbat.numend = couponbat.coupons.last.couponnumber
     couponbat.number = couponbat.coupons.count
     couponbat.save
-
-
-
-
-    # str = ''
-    # numbegin = ''
-    # step = 0
-    # $redis.set("progress", 0)
-    # Coupon.transaction do
-    #
-    #   temstr = ''
-    #   temstep = 0
-    #   temcouponarr = Array.new
-    #   couponbat_params[:number].to_i.times do
-    #     temstr = couponbat_params[:prefix].to_s
-    #     temlength = couponbat_params[:digit].to_i - temstr.length - temstep.to_s.length
-    #     temlength.times do
-    #       str = str + '0'
-    #     end
-    #     temstr = temstr + temstep.to_s
-    #     temcouponarr.push temstr
-    #   end
-    #
-    #   temcouponnumberarr = Array.new
-    #   temcoupon_couponnumbers = Coupon.where('couponnumber in (?)',temcouponarr)
-    #   temcoupon_couponnumbers.each do |f|
-    #     temcouponnumberarr.push f.couponnumber
-    #   end
-    #
-    #   couponbat_params[:number].to_i.times do
-    #     step = step + 1
-    #     progress = (step.to_f / couponbat_params[:number].to_f) * 100.0
-    #     $redis.set("progress", progress)
-    #     str = couponbat_params[:prefix].to_s
-    #     temlength = couponbat_params[:digit].to_i - str.length - step.to_s.length
-    #     temlength.times do
-    #       str = str + '0'
-    #     end
-    #     str = str + step.to_s
-    #
-    #     if numbegin == ''
-    #       numbegin = str
-    #     end
-    #
-    #     coupbat_model = 1
-    #     if couponbat_params[:coupontype] == 3
-    #       coupbat_model = 2
-    #     end
-    #
-    #     #coupon = Coupon.find_by_couponnumber(str)
-    #
-    #     if temcouponnumberarr.count(str) == 0
-    #       @couponbat.coupons.create(model:coupbat_model,
-    #                                 facevalue:couponbat_params[:facevalue],
-    #                                 condition:couponbat_params[:condition],
-    #                                 expirytype:couponbat_params[:expirytype],
-    #                                 assignexpiry:couponbat_params[:assignexpiry],
-    #                                 fixedexpiry:couponbat_params[:fixedexpiry],
-    #                                 alreadyused:0,
-    #                                 name:couponbat_params[:name],
-    #                                 couponnumber:str,
-    #                                 summary:couponbat_params[:summary],
-    #                                 status:1,
-    #                                 coupontype:couponbat_params[:coupontype],
-    #                                 city:couponbat_params[:city]
-    #       )
-    #     end
-    #   end
-    # end
-    # @couponbat.numbegin = numbegin
-    # @couponbat.numend = str
-    # @couponbat.number = @couponbat.coupons.count
-    # @couponbat.save
-
+    $redis.set("progress", 0)
+    $redis.set("progressstep", 0)
     redirect_to couponbats_path
   end
 
@@ -247,6 +170,8 @@ class CouponbatsController < ApplicationController
       @couponbat.save
       notice = '批量卡下存在已使用或已绑定用户的卡，无法全部删除'
     end
+    $redis.set("progress", 0)
+    $redis.set("progressstep", 0)
     respond_to do |format|
       format.html { redirect_to couponbats_path, notice: notice }
       format.json { head :no_content }
@@ -266,6 +191,25 @@ class CouponbatsController < ApplicationController
 # Never trust parameters from the scary internet, only allow the white list through.
   def couponbat_params
     params.require(:couponbat).permit(:name, :number, :facevalue, :condition, :expirytype, :assignexpiry, :fixedexpiry, :coupontype, :summary, :generate, :numbegin, :numend, :city, :prefix, :digit)
+  end
+
+  def checkmin(min,max) #递归可用起始couponnumber
+    keyid = (max - min) / 2
+    if keyid < 1
+      return max
+    else
+      keyid += min
+      coupon = Coupon.find_by_couponnumber(keyid)
+      if coupon
+        checkmin(keyid,max)
+      else
+        checkmin(min,keyid)
+      end
+    end
+  end
+
+  def createcoupon(couponbat,model,facevalue,condition,expirytype,assignexpiry,fixedexpiry,name,couponnumber,summary,coupontype,city)
+
   end
 
 end

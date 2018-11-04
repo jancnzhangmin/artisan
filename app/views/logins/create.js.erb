@@ -1,0 +1,10 @@
+var src = $('#rucapimg').attr('src');
+
+if('<%= @status %>' == ''){
+    window.location.href = '../devices';
+}else {
+    $('#rucapimg').attr('src',src);
+    $('#messagediv').show();
+    $('#messagespan').text('<%= @status %>');
+    $('#rucaptchainput').val('');
+}
